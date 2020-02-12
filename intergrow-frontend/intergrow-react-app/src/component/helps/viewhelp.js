@@ -14,6 +14,17 @@ class HelpActions{
 
 class Viewhelp extends React.Component{
 
+    state = {
+        helps:[],
+
+        newHelpData:{
+            id:'',
+            mentee:'',
+            help_discription:'',
+            help_date:''
+        },
+        newHelpToggleModal:false,
+    }
 
     // helpActions = new HelpActions();
     _refreshHelps(){
@@ -24,18 +35,27 @@ class Viewhelp extends React.Component{
         });
     }
 
-    state = {
-        helps:[],
+    // add new team
+    createHelp(){
+        axios.post(COURSE_API_URL + 'helps/', this.state.newHelpData).then((response) => {
 
-        newHelpData:{
-            id:'',
-            mentee:'',
-            help_discription:'',
-            help_date:''
-        },
+            console.log(response.data);
+            let {helps} = this.state;
+            helps.push(response.data);
 
-        newHelpToggleModal:false,
+            this.setState({
+                newHelpData:false,
+                helps,
+
+                mentee:'',
+                help_discription:'',
+                help_date:'',
+                newHelpToggleModal:false,
+            });
+            
+        });
     }
+    
     componentWillMount(){
         this._refreshHelps();
         // this.helpActions._refreshHelps();
@@ -126,10 +146,24 @@ class Viewhelp extends React.Component{
 
                                 }} />
                             </InputGroupAddon>
+                        </FormGroup>  
+                        <FormGroup>
+                            <InputGroupAddon addonType="prepend">
+                                <InputGroupText><i class="fas fa-prescription-bottle mr-2" ></i></InputGroupText>
+                                <Input type='date' placeholder="Date" value={this.state.newHelpData.help_date} onChange={(e) =>
+                                {
+                                    let { newHelpData } = this.state;
+
+                                    newHelpData.help_date = e.target.value;
+
+                                    this.setState({ newHelpData });
+
+                                }} />
+                            </InputGroupAddon>
                         </FormGroup>                                    
                     </ModalBody>
                     <ModalFooter>
-                    <Button color="primary" rounded>Post</Button>{' '}
+                    <Button color="primary" rounded onClick = {this.createHelp.bind(this)}>Post</Button>{' '}
                     <Button color="danger" rounded onClick = {this.helpToggleClose.bind(this)} >Cancel</Button>
                     </ModalFooter>
                 </Modal>
@@ -139,56 +173,51 @@ class Viewhelp extends React.Component{
 
 
         return(
-                <main class="">
-                    <section class="card aqua-gradient wow fadeIn  text-uppercase">
+            <main class="">
+                <section class="card aqua-gradient wow fadeIn  text-uppercase">
 
-                        {/* <!-- Content --> */}
-                        <div class="card-body text-white text-center py-1 px-8 my-3">
+                    {/* <!-- Content --> */}
+                    <div class="card-body text-white text-center py-1 px-8 my-3">
 
-                            <h1 class="mb-4">
-                                <strong>Help & Response</strong>
-                            </h1>
-                            <p>
-                                <strong>Asking help and response</strong>
-                            </p>
-                        </div>
-                        {/* <!-- Content --> */}
-                    </section>              
-                        <div class="container px-5">
+                        <h1 class="mb-4">
+                            <strong>Help & Response</strong>
+                        </h1>
+                        <p>
+                            <strong>Asking help and response</strong>
+                        </p>
+                    </div>
+                    {/* <!-- Content --> */}
+                </section>              
                     
-                    <section>
-                        {/* <MDBContainer> */}
-                            <div className="card mb-4 mt-2 pt-2 pb-2 text-center wow fadeIn">
-                                <span className="pull-right">
-                                <MDBBtn 
-                                color = 'primary'
-                                
-                                className={'btn btn-info'}
-                                onClick = {this.newHelpToggle.bind(this)}
-                                rounded 
-                                >
-                                    <i class="fas fa-paw mr-2" ></i>Ask Question</MDBBtn>
-                                </span>
-                            </div>
-                        {/* </MDBContainer> */}
-
-                        <div>
-                            {newHelp}
+                
+                <section>
+                    {/* <MDBContainer> */}
+                        <div className="card mb-4 mt-2 pt-2 pb-2 text-center wow fadeIn">
+                            <span className="pull-right">
+                            <MDBBtn 
+                            color = 'primary'
+                            
+                            className={'btn btn-info'}
+                            onClick = {this.newHelpToggle.bind(this)}
+                            rounded 
+                            >
+                                <i class="fas fa-paw mr-2" ></i>Ask Help</MDBBtn>
+                            </span>
                         </div>
-
-                    </section>
-
+                    {/* </MDBContainer> */}
+                    <div>
+                        {newHelp}
+                    </div>
+                </section>
+                <div class="container px-5">
                     <section>
                         {/* <MDBContainer> */}
                         <div className="card mb-4 mt-2 pt-2 pb-2 wow fadeIn">
-                            {viewAllHelp}                           
-                            
+                            {viewAllHelp}   
                         </div>
-
-                    </section>
-                        
-                    </div>
-                </main>
+                    </section>                        
+                </div>
+            </main>
         )
     }
 

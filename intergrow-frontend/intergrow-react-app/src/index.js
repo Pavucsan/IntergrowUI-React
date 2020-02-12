@@ -34,9 +34,7 @@ import Header from './component/core/header';
 import Footer from './component/core/footer';
 import Notfound from './component/notfoundpage/404notfound';
 import Viewhelp from './component/helps/viewhelp';
-
-
-
+import ViewTeam from './component/Team/team';
 
 
 const routing = (
@@ -49,6 +47,7 @@ const routing = (
                 <Route path ='/employeelist' component = {EmployeeList}/>
                 <Route path ='/goals' component = {goals}/>
                 <Route path = '/help' component = {Viewhelp}/>
+                <Route path = '/team' component = {ViewTeam}/>
                 <Route component = {Notfound}/>
             </Switch>
         </div>

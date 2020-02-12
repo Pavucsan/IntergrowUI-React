@@ -1,38 +1,3 @@
-// import React from 'react';
-
-// function header(){
-//     return(
-//         <div>
-//             <h1>
-//                 Header
-//             </h1>
-//         </div>
-//     );
-// }
-
-// export default header;
-// import React from 'react';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-
-
-// const header = () =>
-// {
-//     return (
-//         <div>
-//             <AppBar >
-//                 <Toolbar >
-//                     <Typography style={{ color: 'white' }}>
-//                         Navigation Bar
-//                     </Typography>
-//                 </Toolbar>
-//             </AppBar>
-//         </div>
-//     )
-// }
-// export default header;
-
 import React, { Component } from "react";
 import
 {
@@ -73,6 +38,10 @@ class header extends React.Component
             &nbsp; &nbsp;
             <MDBNavItem>
               <a className="white-text" href="/employee">Empoyee</a>
+            </MDBNavItem>
+            &nbsp; &nbsp;
+            <MDBNavItem>
+              <a className="white-text" href="/team">Team</a>
             </MDBNavItem>
             &nbsp; &nbsp;
             <MDBNavItem>
