@@ -30,16 +30,16 @@ const footer = () => {
             <h5 className="title" style={{float:'left'}}>Social media</h5>
             <ul >
               <li className="list-unstyled" style={{float:'left', paddingLeft:'20px'}}>
-                <a href="#!"><i class="fa fa-facebook mr-3"></i>Facebook</a>
+                <a href="#!"><i className="fa fa-facebook mr-3"></i>Facebook</a>
               </li>
               <li className="list-unstyled" style={{float:'left', paddingLeft:'20px'}}>
-                <a href="#!"><i class="fa fa-twitter mr-3"></i>Twitter</a>
+                <a href="#!"><i className="fa fa-twitter mr-3"></i>Twitter</a>
               </li>
               <li className="list-unstyled" style={{float:'left', paddingLeft:'20px'}}>
-                <a href="#!"><i class="fas fa-home mr-3"></i>Youtube</a>
+                <a href="#!"><i className="fas fa-home mr-3"></i>Youtube</a>
               </li>
               <li className="list-unstyled" style={{float:'left', paddingLeft:'20px'}}>
-                <a href="#!"><i class="fas fa-home mr-3"></i>LinkedIn</a>
+                <a href="#!"><i className="fas fa-home mr-3"></i>LinkedIn</a>
               </li>
             </ul>
           </MDBCol>

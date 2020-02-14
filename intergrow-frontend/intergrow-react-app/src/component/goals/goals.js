@@ -2,11 +2,15 @@ import React from 'react';
 
 function goals(){
     return(
-        <div>
+        <React.Fragment>
+        <div className="full">
+
             <h1>
-                Gols
+                Goals
             </h1>
+            
         </div>
+        </React.Fragment>
     );
 }
 

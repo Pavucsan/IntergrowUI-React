@@ -105,7 +105,7 @@ closeToggle(){
 
         return (
 
-            <main class="">
+            <div>
                 <section class="card aqua-gradient wow fadeIn">
 
                     {/* <!-- Content --> */}
@@ -134,9 +134,8 @@ closeToggle(){
                                     <ModalHeader toggle={this.closeToggle.bind(this)}>Create Employee Profile</ModalHeader>
                                     <ModalBody>
                                         <FormGroup>
-                                            <Label for='employeeId'>Employee Id</Label><br />
                                             <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>@</InputGroupText>
+                                                <InputGroupText><i className="fas fa-id-card-alt mr-2" ></i></InputGroupText>
                                                 <Input placeholder="Employee id" value={this.state.newEmployeeData.employee_id} onChange={(e) =>
                                                 {
                                                     let { newEmployeeData } = this.state;
@@ -149,9 +148,8 @@ closeToggle(){
                                             </InputGroupAddon>
                                         </FormGroup>
                                         <FormGroup>
-                                            <Label for='full name'>full name</Label><br />
                                             <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>@</InputGroupText>
+                                                <InputGroupText><i className="fas fa-address-card mr-2" ></i></InputGroupText>
                                                 <Input placeholder="Fistname" value={this.state.newEmployeeData.full_name} onChange={(e) =>
                                                 {
                                                     let { newEmployeeData } = this.state;
@@ -164,9 +162,8 @@ closeToggle(){
                                             </InputGroupAddon>
                                         </FormGroup>
                                         <FormGroup>
-                                            <Label for='first_name'>Fistname</Label><br />
                                             <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>@</InputGroupText>
+                                                <InputGroupText><i className="fas fa-address-card mr-2" ></i></InputGroupText>
                                                 <Input placeholder="Fistname" value={this.state.newEmployeeData.first_name} onChange={(e) =>
                                                 {
                                                     let { newEmployeeData } = this.state;
@@ -179,9 +176,8 @@ closeToggle(){
                                             </InputGroupAddon>
                                         </FormGroup>
                                         <FormGroup>
-                                            <Label for='Lastname'>Lastname</Label><br />
                                             <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>@</InputGroupText>
+                                                <InputGroupText><i className="fas fa-address-card mr-2" ></i></InputGroupText>
                                                 <Input placeholder="Lastname" value={this.state.newEmployeeData.last_name} onChange={(e) =>
                                                 {
                                                     let { newEmployeeData } = this.state;
@@ -194,9 +190,8 @@ closeToggle(){
                                             </InputGroupAddon>
                                         </FormGroup>
                                         <FormGroup>
-                                            <Label for='employeeId'>Employee Id</Label><br />
                                             <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>@</InputGroupText>
+                                                <InputGroupText><i className="fas fa-envelope mr-2" ></i></InputGroupText>
                                                 <Input placeholder="Email" value={this.state.newEmployeeData.email} onChange={(e) =>
                                                 {
                                                     let { newEmployeeData } = this.state;
@@ -209,9 +204,8 @@ closeToggle(){
                                             </InputGroupAddon>
                                         </FormGroup>
                                         <FormGroup>
-                                            <Label for='phone_no'>Phone</Label><br />
                                             <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>@</InputGroupText>
+                                                <InputGroupText><i className="fas fa-phone mr-2" ></i></InputGroupText>
                                                 <Input placeholder="Phone No." value={this.state.newEmployeeData.phone_number} onChange={(e) =>
                                                 {
                                                     let { newEmployeeData } = this.state;
@@ -224,9 +218,8 @@ closeToggle(){
                                             </InputGroupAddon>
                                         </FormGroup>
                                         <FormGroup>
-                                            <Label for='address'>Address</Label><br />
                                             <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>@</InputGroupText>
+                                                <InputGroupText><i className="fas fa-map-marker-alt mr-2" ></i></InputGroupText>
                                                 <Input placeholder="Address" value={this.state.newEmployeeData.address} onChange={(e) =>
                                                 {
                                                     let { newEmployeeData } = this.state;
@@ -275,7 +268,7 @@ closeToggle(){
                         </div>                     
                     </section> 
                 </div>
-            </main>
+            </div>
 
         );
     }

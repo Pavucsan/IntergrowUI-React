@@ -13,6 +13,7 @@ import Carousel from "react-multi-carousel";
 
 //response for carousel **** 
 import "react-multi-carousel/lib/styles.css";
+import AdminCardSection1 from './section/AdminCardSection1';
 
 const responsive = {
     superLargeDesktop: {
@@ -136,7 +137,8 @@ class Home extends React.Component {
 
         
     return(
-        <div>
+        <React.Fragment>
+        <div> 
              <section class="card aqua-gradient wow fadeIn text-uppercase">
 
                 {/* <!-- Content --> */}
@@ -153,63 +155,65 @@ class Home extends React.Component {
             {/* <!-- Content --> */}
             </section>
 
-            {/* <MDBCarousel
-                    activeItem={1}
-                    length={3}
-                    showControls={true}
-                    showIndicators={true}
-                    className="z-depth-1"
-                >
-                    <MDBCarouselInner style={{height:'300px'}}>
-                        <MDBCarouselItem itemId="1">
-                            <MDBView>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
-                                    alt="First slide"
-                                />
-                                <MDBMask overlay="black-light" />
-                            </MDBView>
-                        </MDBCarouselItem>
-                        <MDBCarouselItem itemId="2">
-                            <MDBView>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
-                                    alt="Second slide"
-                                />
-                                <MDBMask overlay="black-strong" />
-                            </MDBView>
-                        </MDBCarouselItem>
-                        <MDBCarouselItem itemId="3">
-                            <MDBView>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
-                                    alt="Third slide"
-                                />
-                                <MDBMask overlay="black-slight" />
-                            </MDBView>
-                        </MDBCarouselItem>                        
-                    </MDBCarouselInner>                    
-        </MDBCarousel> */}
+                    {/* <MDBCarousel
+                            activeItem={1}
+                            length={3}
+                            showControls={true}
+                            showIndicators={true}
+                            className="z-depth-1"
+                        >
+                            <MDBCarouselInner style={{height:'300px'}}>
+                                <MDBCarouselItem itemId="1">
+                                    <MDBView>
+                                        <img
+                                            className="d-block w-100"
+                                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+                                            alt="First slide"
+                                        />
+                                        <MDBMask overlay="black-light" />
+                                    </MDBView>
+                                </MDBCarouselItem>
+                                <MDBCarouselItem itemId="2">
+                                    <MDBView>
+                                        <img
+                                            className="d-block w-100"
+                                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+                                            alt="Second slide"
+                                        />
+                                        <MDBMask overlay="black-strong" />
+                                    </MDBView>
+                                </MDBCarouselItem>
+                                <MDBCarouselItem itemId="3">
+                                    <MDBView>
+                                        <img
+                                            className="d-block w-100"
+                                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
+                                            alt="Third slide"
+                                        />
+                                        <MDBMask overlay="black-slight" />
+                                    </MDBView>
+                                </MDBCarouselItem>                        
+                            </MDBCarouselInner>                    
+                </MDBCarousel> */}
 
+            <MDBContainer>
+            <div> 
             
-            <div className="pl-4 pr-4"> 
-                    <div className="card mb-4 mt-3 wow fadeIn">
+                    {/* <div className="card mb-4 mt-3 wow fadeIn">
                         <div className="card-body text-white text-center py-1 px-8 my-3">
                             <span><h2>Activities</h2></span>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="card mb-4 mt-3 wow fadeIn">
 
                         <div className="card-header font-weight-bold">
                             <span><h2>Goal Reached</h2></span>
                         </div>
-                        <span className="pull-right">
-                            {teamProgress}
-                            
+                        <span className="pull-right m-2 mt-5">
+                            <React.Fragment>
+                                <AdminCardSection1/>
+                            </React.Fragment>   
                         </span>
                     </div>
 
@@ -282,8 +286,10 @@ class Home extends React.Component {
                         </span>
                     </div>
                 </div>
-
+                </MDBContainer>
             </div>
+            </React.Fragment>
+            
     );
     
     }

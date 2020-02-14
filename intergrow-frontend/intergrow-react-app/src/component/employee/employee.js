@@ -65,7 +65,7 @@ class EmployeeView extends React.Component {
 
         return (
 
-            <main class="">
+            <div className="full">
                 <section class="card aqua-gradient wow fadeIn  text-uppercase">
                 {/* <!-- Content --> */}
                 <div class="card-body text-white text-center py-1 px-8 my-3">
@@ -91,7 +91,7 @@ class EmployeeView extends React.Component {
                     <section class="pt-5">
                     </section>
                 </div>
-            </main>
+                </div>
 
         );
     }

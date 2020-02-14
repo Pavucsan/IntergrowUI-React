@@ -8,8 +8,7 @@ import { Toast, ToastBody, ToastHeader, Spinner } from 'reactstrap';
 const COURSE_API_URL = 'http://localhost:8000/';
 
 
-class HelpActions{
-    
+class HelpActions{    
 }
 
 class Viewhelp extends React.Component{
@@ -91,25 +90,25 @@ class Viewhelp extends React.Component{
         let viewAllHelp = this.state.helps.map((help)=>{
             return(
                 <div className="p-1 bg-primary my-2 mr-2 ml-2 rounded">
-                <Toast key={help.id}>
-                  <ToastHeader>
-                    Reactstrap
-                  </ToastHeader>
-                  <ToastBody>
-                      {help.help_discription}
-                  </ToastBody>
-                  <hr/>
-                  <MDBBtn 
-                    color = 'primary'
-                    onClick = {this.newHelpToggle.bind(this)}
-                    rounded 
-                    >Responses</MDBBtn>
-                  <MDBBtn 
-                    color = 'primary'
-                    onClick = {this.newHelpToggle.bind(this)}
-                    rounded 
-                    >Give Response</MDBBtn>
-                </Toast>
+                    <MDBContainer className='card'>
+                        <ToastHeader>
+                            Reactstrap
+                        </ToastHeader>
+                        <ToastBody>
+                            {help.help_discription}
+                        </ToastBody>                        
+                    </MDBContainer>
+                    <hr/>
+                        <MDBBtn 
+                            color = 'primary'
+                            onClick = {this.newHelpToggle.bind(this)}
+                            rounded 
+                            >Responses</MDBBtn>
+                        <MDBBtn 
+                            color = 'primary'
+                            onClick = {this.newHelpToggle.bind(this)}
+                            rounded 
+                            >Give Response</MDBBtn>
               </div>
             );
         });
@@ -212,7 +211,7 @@ class Viewhelp extends React.Component{
                 <div class="container px-5">
                     <section>
                         {/* <MDBContainer> */}
-                        <div className="card mb-4 mt-2 pt-2 pb-2 wow fadeIn">
+                        <div className="mb-4 mt-2 pt-2 pb-2 wow fadeIn">
                             {viewAllHelp}   
                         </div>
                     </section>                        
