@@ -3,9 +3,9 @@ import { MDBBtn, MDBContainer, } from 'mdbreact';
 import axios from 'axios';
 import { Modal, Table, Button, ModalHeader, ModalBody, ModalFooter, InputGroup, Label, InputGroupText, InputGroupAddon, Input, FormGroup } from 'reactstrap';
 
+import {COURSE_API_URL} from '../../constants/utill';
 
-
-const COURSE_API_URL = 'http://localhost:8000/';
+// const COURSE_API_URL = 'http://localhost:8000/';
 
 class EmployeeList extends React.Component {
     state = {

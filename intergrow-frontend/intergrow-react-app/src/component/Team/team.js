@@ -6,7 +6,7 @@ import { Toast, ToastBody, ToastHeader, Spinner, Badge } from 'reactstrap';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 
-const COURSE_API_URL = 'http://localhost:8000/';
+import {COURSE_API_URL} from '../../constants/utill';
 
 class ViewTeam extends React.Component{
 

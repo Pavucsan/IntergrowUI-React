@@ -5,7 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, InputGroupTe
 import { Toast, ToastBody, ToastHeader, Spinner } from 'reactstrap';
 
 
-const COURSE_API_URL = 'http://localhost:8000/';
+import {COURSE_API_URL} from '../../constants/utill';
 
 
 class HelpActions{    

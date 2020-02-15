@@ -4,9 +4,7 @@ import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDB
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBRow } from 'mdbreact';
 import axios from 'axios';
 
-
-
-const COURSE_API_URL = 'http://localhost:8000/employees/';
+import {COURSE_API_URL} from '../../constants/utill';
 
 class EmployeeView extends React.Component {
 
@@ -26,7 +24,7 @@ class EmployeeView extends React.Component {
 
     _refreshProject()
     {
-        axios.get(COURSE_API_URL).then((response) =>
+        axios.get(COURSE_API_URL + 'empoyees/').then((response) =>
         {
             this.setState({
                 employees: response.data

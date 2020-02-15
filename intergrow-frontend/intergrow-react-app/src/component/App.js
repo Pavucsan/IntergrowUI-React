@@ -3,6 +3,7 @@ import React from 'react';
 import '../css/App.css';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, InputGroupText, InputGroupAddon, Input, FormGroup  } from 'reactstrap';
 
+import {COURSE_AUTH_URL} from '../constants/utill';
 
 class App extends React.Component{
   state = {
@@ -15,21 +16,30 @@ class App extends React.Component{
     // use BE api to login
 
     // API from Backend
-    // fetch('http://localhost:8000/auth', {
-    //   method : 'POST',
-    //   headers : {'Content-Type' : 'application/json'},
-    //   body : JSON.stringify(this.state.credencials)
-    // })
-    // // 1st get the data as json
-    // .then(data => data.json())
-    // // use json data 'use token as authendication'
-    // .then(data => {
-    //   console.log(data.token);
-    // })
+    fetch(COURSE_AUTH_URL, {
+      method : 'POST',
+      headers : {'Content-Type' : 'application/json'},
+      body : JSON.stringify(this.state.credencials)
+    })
+    // 1st get the data as json
+    .then(data => data.json())
+    // use json data 'use token as authendication'
+    .then(data => {
+      if(data.token == null){        
+        console.error("Login faild!");
+        
+      }
+      else{
+        console.log("Login success");
+        console.log(data.token);
+      }
+    })
     // .catch( e =>
     //   console.error(e)
     // )
-
+    this.setState({
+      newLoginModal:false,
+    })
   }
   loginToggle(){
     this.setState({
