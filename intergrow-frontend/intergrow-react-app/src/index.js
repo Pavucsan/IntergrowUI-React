@@ -22,6 +22,7 @@ import Footer from './component/core/footer';
 import NotFoundPage from './component/notfoundpage/404notfound';
 import Viewhelp from './component/helps/viewhelp';
 import ViewTeam from './component/Team/team';
+import RegisterUser from './component/account/register-user';
 
 const routing = (
     <Router>
@@ -34,6 +35,7 @@ const routing = (
                 <Route path ='/goals' component = {goals}/>
                 <Route path = '/help' component = {Viewhelp}/>
                 <Route path = '/team' component = {ViewTeam}/>
+                <Route path = '/register' component = {RegisterUser}/>
                 <Route component = {NotFoundPage}/>
             </Switch>
         </div>

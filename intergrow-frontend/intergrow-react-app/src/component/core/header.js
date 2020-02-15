@@ -37,7 +37,7 @@ class header extends React.Component
             </MDBNavItem>
             &nbsp; &nbsp;
             <MDBNavItem>
-              <a className="white-text" href="/employee">Empoyee</a>
+              <a className="white-text" href="/employeelist">Empoyee</a>
             </MDBNavItem>
             &nbsp; &nbsp;
             <MDBNavItem>
@@ -51,6 +51,7 @@ class header extends React.Component
             <MDBNavItem>
               <a className="white-text" href="/help">Helps & Response</a>
             </MDBNavItem>
+            
            
          {/* <MDBNavItem>
               <MDBDropdown>
@@ -84,8 +85,9 @@ class header extends React.Component
                  User <MDBIcon icon="user" />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#!">Profile</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Log out</MDBDropdownItem>
+                  <MDBDropdownItem href="/register">Register</MDBDropdownItem>
+                  <MDBDropdownItem href="/login">Login</MDBDropdownItem>
+                  <MDBDropdownItem href="/logout">Logout</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
