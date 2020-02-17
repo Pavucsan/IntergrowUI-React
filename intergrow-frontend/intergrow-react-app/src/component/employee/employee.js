@@ -1,17 +1,10 @@
-import React from "react";
-import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
-    "mdbreact";
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBRow } from 'mdbreact';
 import axios from 'axios';
+import { MDBBtn } from 'mdbreact';
+import React from "react";
+import { COURSE_API_URL } from '../../constants/utill';
 
-import {COURSE_API_URL} from '../../constants/utill';
 
 class EmployeeView extends React.Component {
-
-    constructor()
-    {
-        super();
-    }
     state = {
         employees: []         
     }

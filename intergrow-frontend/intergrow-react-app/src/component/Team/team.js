@@ -1,12 +1,10 @@
-import React from 'react';
-import {MDBBtn, MDBContainer} from 'mdbreact';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, InputGroupText, InputGroupAddon, Input, FormGroup  } from 'reactstrap';
 import Axios from 'axios';
-import { Toast, ToastBody, ToastHeader, Spinner, Badge } from 'reactstrap';
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { MDBBtn, MDBContainer } from 'mdbreact';
+import React from 'react';
+import { Badge, Button, FormGroup, Input, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader, Pagination, PaginationItem, PaginationLink, ToastBody, ToastHeader } from 'reactstrap';
+import { COURSE_API_URL } from '../../constants/utill';
 
 
-import {COURSE_API_URL} from '../../constants/utill';
 
 class ViewTeam extends React.Component{
 
@@ -133,14 +131,6 @@ class ViewTeam extends React.Component{
             </div>
             );
         }
-
-        let loopEmployees = this.state.employees.map((employee) =>{
-            return(
-                <option value={employee.id}>{employee.first_name}</option>
-            )
-        });
-
-
         let newTeam = this.state.teams.map(()=>{
             return(
                 <Modal isOpen={this.state.newTeamToggleModal} toggle={this.newTeamToggle.bind(this)}>
@@ -245,7 +235,7 @@ class ViewTeam extends React.Component{
                 // </Toast>
             )
         })
-        const titleTeam = () => {
+        const titleTeam = ((e) => {
             return(
                 <div className="card-body text-white text-center py-1 px-8 my-3">
                     <h1 className="mb-4">
@@ -256,7 +246,7 @@ class ViewTeam extends React.Component{
                     </p>
                 </div>     
             );     
-        }
+        });
         return(
             <div>
                 <section className="card aqua-gradient wow fadeIn  text-uppercase">

@@ -1,24 +1,26 @@
 import React from 'react';
+import { Modal } from 'reactstrap';
 // import logo from './logo.svg';
 import '../css/App.css';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, InputGroupText, InputGroupAddon, Input, FormGroup  } from 'reactstrap';
-
-
 import Login from './account/login';
 import RegisterUser from './account/register-user';
+import Home from './core/home';
+
+
 
 class App extends React.Component{
   
   render(){
     return (
-      <Modal isOpen='true' style={{textAlignVertical: 'center'}}>
+      // <Modal isOpen='true' style={{textAlignVertical: 'center'}}>
       <div className='text-center' style={{textAlignVertical: 'center'}}>
         
           <Login/>
-          <RegisterUser/>
+          {/* <RegisterUser/> */}
+          <Home/>
       
       </div>
-      </Modal>
+      // </Modal>
     );
   }
 

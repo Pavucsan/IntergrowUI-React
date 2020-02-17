@@ -1,9 +1,9 @@
-import React from "react";
-import { MDBBtn, MDBContainer, } from 'mdbreact';
 import axios from 'axios';
-import { Modal, Table, Button, ModalHeader, ModalBody, ModalFooter, InputGroup, Label, InputGroupText, InputGroupAddon, Input, FormGroup } from 'reactstrap';
+import { MDBBtn } from 'mdbreact';
+import React from "react";
+import { Button, FormGroup, Input, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { COURSE_API_URL } from '../../constants/utill';
 
-import {COURSE_API_URL} from '../../constants/utill';
 
 // const COURSE_API_URL = 'http://localhost:8000/';
 

@@ -1,12 +1,12 @@
 import React from 'react';
 // import logo from './logo.svg';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, InputGroupText, InputGroupAddon, Input, FormGroup  } from 'reactstrap';
+import { Button, FormGroup, Input, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { COURSE_AUTH_URL } from '../../constants/utill';
 
-import {COURSE_AUTH_URL} from '../../constants/utill';
 
 class Login extends React.Component{
   state = {
-    newLoginModal:false,
+    newLoginModal:true,
     credencials: {username: '', password: ''},
   }
   login = () =>{
@@ -25,12 +25,18 @@ class Login extends React.Component{
     // use json data 'use token as authendication'
     .then(data => {
       if(data.token == null){        
-        console.error("Login faild!");
-        
+        console.error("Login faild!");   
+        this.setState({
+          newLoginModal:true
+        })     
       }
       else{
         console.log("Login success");
         console.log(data.token);
+        this.setState({
+          newLoginModal:false,
+          credencials: {username: '', password: ''},
+        })
       }
     })
     // .catch( e =>
@@ -61,8 +67,9 @@ class Login extends React.Component{
   render(){
     return (
       <div className="">
-        <Button onClick={this.loginToggle.bind(this)}>Login</Button>
+        {/* <Button onClick={this.loginToggle.bind(this)}>Login</Button> */}
         <Modal isOpen={this.state.newLoginModal} toggle={this.loginToggle.bind(this)}>
+        {/* <Modal isOpen='true' toggle={this.loginToggle.bind(this)}> */}
           <ModalHeader onClick = {this.loginToggle.bind(this)}>Login User</ModalHeader>
             <ModalBody>
             <FormGroup>
@@ -88,7 +95,7 @@ class Login extends React.Component{
           </ModalBody>
           <ModalFooter>
             <Button color="primary" rounded='true' onClick = {this.login}>Login</Button>
-            <Button color="danger" rounded='true'  onClick = {this.closeToggle.bind(this)} >Cancel</Button>
+            {/* <Button color="danger" rounded='true'  onClick = {this.closeToggle.bind(this)} >Cancel</Button> */}
           </ModalFooter>
         </Modal>   
       </div>

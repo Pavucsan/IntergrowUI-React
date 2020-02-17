@@ -8,9 +8,6 @@ import { Toast, ToastBody, ToastHeader, Spinner } from 'reactstrap';
 import {COURSE_API_URL} from '../../constants/utill';
 
 
-class HelpActions{    
-}
-
 class Viewhelp extends React.Component{
 
     state = {
@@ -103,7 +100,7 @@ class Viewhelp extends React.Component{
                             color = 'primary'
                             onClick = {this.newHelpToggle.bind(this)}
                             rounded 
-                            >Responses</MDBBtn>
+                            >Show Responses</MDBBtn>
                         <MDBBtn 
                             color = 'primary'
                             onClick = {this.newHelpToggle.bind(this)}

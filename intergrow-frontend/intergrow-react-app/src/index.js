@@ -1,28 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
-import Routes from './routes';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-
-import './css/index.css';
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import "mdbreact/dist/css/mdb.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import RegisterUser from './component/account/register-user';
+import App from './component/App';
+import Footer from './component/core/footer';
+import Header from './component/core/header';
 import Home from './component/core/home';
 import EmployeeView from './component/employee/employee';
 import EmployeeList from './component/employee/employeeList';
 import goals from './component/goals/goals';
-import App from './component/App';
-
-import Header from './component/core/header';
-import Footer from './component/core/footer';
-import NotFoundPage from './component/notfoundpage/404notfound';
 import Viewhelp from './component/helps/viewhelp';
+import NotFoundPage from './component/notfoundpage/404notfound';
 import ViewTeam from './component/Team/team';
-import RegisterUser from './component/account/register-user';
+import './css/index.css';
+
+
+
+
 
 const routing = (
     <Router>

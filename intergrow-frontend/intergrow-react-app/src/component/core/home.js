@@ -1,19 +1,20 @@
-import React from 'react';
-import { MDBBtn } from 'mdbreact';
-import { MDBCarousel, MDBIcon, MDBCard, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
-    "mdbreact";
-import {Progress, Label } from 'reactstrap';
-
-import EllipsisText from 'react-ellipsis-text';
-import '../../css/home.css';
-
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { MDBBtn, MDBCard, MDBContainer, MDBIcon } from 'mdbreact';
+import React from 'react';
+import EllipsisText from 'react-ellipsis-text';
 import Carousel from "react-multi-carousel";
-
 //response for carousel **** 
 import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
+import { Label, Progress } from 'reactstrap';
+import '../../css/home.css';
 import AdminCardSection1 from './section/AdminCardSection1';
+// import '../../css/index.css';
+import Axios from 'axios';
+import { COURSE_API_URL } from '../../constants/utill';
+import AdminTitleCard from './section/AdminTitleCard';
+import AdminTeamCard from './section/AdminTeamCard';
+
 
 const responsive = {
     superLargeDesktop: {
@@ -39,8 +40,7 @@ let i = 0;
 /*****end */
 
 /**Backend API */
-const COURSE_API_URL = 'http://localhost:8000/employees/';
-
+// const COURSE_API_URL = 'http://localhost:8000/employees/';
 
 
 class Home extends React.Component {
@@ -52,28 +52,58 @@ class Home extends React.Component {
     }
     state = {
         i:1,
-        employees: []         
+        employees: [],
+        helps : [],  
+        responses : [],     
+        teams : [], 
     }
 
 // Initial stage
     componentWillMount()
     {
         this._refreshProject();
+        this.getHelps();
+        this.getResponses();
+        this.getTeams();
     }
 
     _refreshProject()
     {
-        axios.get(COURSE_API_URL).then((response) =>
+        axios.get(COURSE_API_URL + 'employees/').then((response) =>
         {
             this.setState({
                 employees: response.data
             })
             // console.log('sfsdf');
-            console.log(this.state.employees);
+            // console.log(this.state.employees);
         });
 
     }
 // End
+
+  getHelps(){
+    Axios.get(COURSE_API_URL + 'helps/').then((respone) => {
+      this.setState({
+          helps:respone.data
+      }) 
+    });
+  }
+  getResponses(){
+    Axios.get(COURSE_API_URL + 'responses/').then((respone) => { 
+          this.setState({
+            responses:respone.data
+          }) 
+    });
+  }
+  getTeams(){
+    Axios.get(COURSE_API_URL + 'teams/').then((respone) => {  
+          this.setState({
+            teams:respone.data
+          }) 
+    });
+  }
+
+
 
     render() {
 
@@ -139,156 +169,85 @@ class Home extends React.Component {
     return(
         <React.Fragment>
         <div> 
-             <section class="card aqua-gradient wow fadeIn text-uppercase">
-
-                {/* <!-- Content --> */}
-                <div class="card-body text-white text-center py-1 px-8 my-1">
-
-                    <h1 class="mb-4">
-                        <strong>Welcome to Intergrow</strong>
-                    </h1>
-                    <p>
-                        <strong>Join with intergrow activities</strong>
-                    </p>
-
-                </div>
-            {/* <!-- Content --> */}
-            </section>
-
-                    {/* <MDBCarousel
-                            activeItem={1}
-                            length={3}
-                            showControls={true}
-                            showIndicators={true}
-                            className="z-depth-1"
-                        >
-                            <MDBCarouselInner style={{height:'300px'}}>
-                                <MDBCarouselItem itemId="1">
-                                    <MDBView>
-                                        <img
-                                            className="d-block w-100"
-                                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
-                                            alt="First slide"
-                                        />
-                                        <MDBMask overlay="black-light" />
-                                    </MDBView>
-                                </MDBCarouselItem>
-                                <MDBCarouselItem itemId="2">
-                                    <MDBView>
-                                        <img
-                                            className="d-block w-100"
-                                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
-                                            alt="Second slide"
-                                        />
-                                        <MDBMask overlay="black-strong" />
-                                    </MDBView>
-                                </MDBCarouselItem>
-                                <MDBCarouselItem itemId="3">
-                                    <MDBView>
-                                        <img
-                                            className="d-block w-100"
-                                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
-                                            alt="Third slide"
-                                        />
-                                        <MDBMask overlay="black-slight" />
-                                    </MDBView>
-                                </MDBCarouselItem>                        
-                            </MDBCarouselInner>                    
-                </MDBCarousel> */}
-
-            <MDBContainer>
-            <div> 
+            <AdminTitleCard/>
             
-                    {/* <div className="card mb-4 mt-3 wow fadeIn">
-                        <div className="card-body text-white text-center py-1 px-8 my-3">
-                            <span><h2>Activities</h2></span>
-                        </div>
-                    </div> */}
+            <MDBContainer xl="2" md="4">
+            
+            <div className="card mb-4 mt-3 wow fadeIn">
 
-                    <div className="card mb-4 mt-3 wow fadeIn">
-
-                        <div className="card-header font-weight-bold">
-                            <span><h2>Goal Reached</h2></span>
-                        </div>
-                        <span className="pull-right m-2 mt-5">
-                            <React.Fragment>
-                                <AdminCardSection1/>
-                            </React.Fragment>   
-                        </span>
-                    </div>
-
-                    <div className="card mb-4 mt-3 wow fadeIn">
-
-                        <div className="card-header font-weight-bold">
-                            <span><h2>Team Activities</h2></span>
-                        </div>
-                        <span className="pull-right m-2">
-                            <MDBContainer>   
-                                <Label>Team 1</Label>                  
-                                <Progress value="25" className="pull-right mt-2 mb-2">25%</Progress>
-                                <Label>Team 2</Label>     
-                                <Progress value={50} className="pull-right mt-2 mb-2">1/2</Progress>
-                                <Label>Team 3</Label>     
-                                <Progress value={75} className="pull-right mt-2 mb-2">You're almost there!</Progress>
-                                <Label>Team 4</Label>     
-                                <Progress color="success" value="100" className="pull-right mt-2 mb-2">You did it!</Progress>
-                                <Label>Team 5</Label>     
-                                <Progress multi className="pull-right mt-2 mb-2">
-                                    <Progress bar value="15">Meh</Progress>
-                                    <Progress bar color="success" value="30">Wow!</Progress>
-                                    <Progress bar color="info" value="25">Cool</Progress>
-                                    <Progress bar color="warning" value="20">20%</Progress>
-                                    <Progress bar color="danger" value="5">!!</Progress>
-                                </Progress>  
-                            </MDBContainer>                                 
-                        </span>
-                    </div>
-
-
-                    <div className="card mb-4 mt-3 wow fadeIn">
-
-                        <div className="card-header font-weight-bold">
-                            <span><h2>Top Employees</h2></span>
-                        </div>
-                        <span className="pull-right">
-
-                        <Carousel
-                                swipeable={false}
-                                draggable={false}
-                                showDots={true}
-                                responsive={responsive}
-                                ssr={true} // means to render carousel on server-side.
-                                infinite={true}
-                                autoPlay={this.props.deviceType !== "mobile" ? true : false}
-                                autoPlaySpeed={4000}
-                                keyBoardControl={true}
-                                customTransition="all .5"
-                                transitionDuration={500}
-                                containerClass="carousel-container"
-                                removeArrowOnDeviceType={["tablet", "mobile"]}
-                                deviceType={this.props.deviceType}
-                                dotListClass="custom-dot-list-style"
-                                itemClass="carousel-item-padding-40-px"
-                                >
-                                {topEmployees}
-                                </Carousel>
-                        </span>
-                    </div>
-
-                    <div className="card mb-4 mt-3 wow fadeIn">
-
-                        <div className="card-header font-weight-bold">
-                            <span><h2>Overall Progress</h2></span>
-                        </div>
-                        <span className="pull-right">
-
-                            
-                        </span>
-                    </div>
+                <div className="card-header font-weight-bold">
+                    <span><h2>Goals Reached</h2></span>
                 </div>
-                </MDBContainer>
+                <span className="pull-right m-2 mt-5">
+                    <React.Fragment>
+                        <AdminCardSection1 
+                            help={this.state.helps} 
+                            responses = {this.state.responses} 
+                            teams = {this.state.teams}
+                            employees = {this.state.employees}
+                        />
+                    </React.Fragment>   
+                </span>
             </div>
-            </React.Fragment>
+
+            <div className="card mb-4 mt-3 wow fadeIn">
+
+                <div className="card-header font-weight-bold">
+                    <span><h2>Team Activities</h2></span>
+                </div>
+                <span className="pull-right m-2">
+                    <AdminTeamCard/>                               
+                </span>
+            </div>
+
+
+            <div className="card mb-4 mt-3 wow fadeIn">
+
+                <div className="card-header font-weight-bold">
+                    <span><h2>Top Employees</h2></span>
+                </div>
+                <span className="pull-right">
+
+                <Carousel
+                        swipeable={false}
+                        draggable={false}
+                        showDots={true}
+                        responsive={responsive}
+                        ssr={true} // means to render carousel on server-side.
+                        infinite={true}
+                        autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                        autoPlaySpeed={4000}
+                        keyBoardControl={true}
+                        customTransition="all .5"
+                        transitionDuration={500}
+                        containerClass="carousel-container"
+                        removeArrowOnDeviceType={["tablet", "mobile"]}
+                        deviceType={this.props.deviceType}
+                        dotListClass="custom-dot-list-style"
+                        itemClass="carousel-item-padding-40-px"
+                        >
+                        {topEmployees}
+                        </Carousel>
+                </span>
+            </div>
+
+            
+        </MDBContainer>
+        <MDBContainer className="cascading-admin-card">
+        <div className="card mb-4 mt-3 wow fadeIn">
+
+                <div className="card-header font-weight-bold">
+                    <span><h2>Overall Progress</h2></span>
+                </div>
+                <span className="pull-right">
+
+                    
+                </span>
+            </div>
+        </MDBContainer>
+    </div>
+    
+    </React.Fragment>
             
     );
     
