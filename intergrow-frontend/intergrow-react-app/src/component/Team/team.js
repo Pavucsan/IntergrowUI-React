@@ -1,8 +1,10 @@
 import Axios from 'axios';
 import { MDBBtn, MDBContainer } from 'mdbreact';
-import React from 'react';
-import { Badge, Button, FormGroup, Input, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader, Pagination, PaginationItem, PaginationLink, ToastBody, ToastHeader } from 'reactstrap';
+import React, {useState} from 'react';
+import { Badge, Button, FormGroup, Input, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader, ToastBody, ToastHeader, Collapse, Alert } from 'reactstrap';
+import {CardBody, Card} from 'reactstrap';
 import { COURSE_API_URL } from '../../constants/utill';
+import TeamSubNav from './sections/TeamSubNav';
 
 
 
@@ -20,14 +22,24 @@ class ViewTeam extends React.Component{
     state = {
         teams : [],
         employees:[],
+        leader:[],
         today:"02/13/2020",
         newTeamData :{
             team_id:'',
             team_name:'',
             leader:'',
-            start_date:'',
+            start_date:''
         },
         
+        newEmployeeData:{
+            team_id:'',
+            employee_id:''
+        },
+        
+
+        members:2,
+        
+        isOpen : false,
         newTeamToggleModal : false,        
     }
     componentWillMount(){
@@ -42,6 +54,30 @@ class ViewTeam extends React.Component{
             })
         });        
     }
+
+
+    toggle(){
+        if(this.state.isOpen === false){
+            this.setState({
+                isOpen:true,
+            })
+            
+        }
+        else{
+            this.setState({
+                isOpen:false,
+            })
+        }
+    }
+    getLeader(id){
+        Axios.get(COURSE_API_URL + `employee/${id}`).then((response) =>{
+            // console.log(response.data);
+            this.state({
+                leader : response.data,
+            })
+        })
+    }
+    
     newTeamToggle(){
         this.setState({
             newTeamToggleModal:true,
@@ -52,11 +88,15 @@ class ViewTeam extends React.Component{
             newTeamToggleModal:false,
         });
     }     
+    // successfullyCreated (){
+    // }
     createTeam(){
         Axios.post(COURSE_API_URL + 'teams/', this.state.newTeamData).then((response) => {
                 console.log(response.date);
                 let {teams} = this.state;
                 teams.push(response.data);
+
+                // this.successfullyCreated();
 
                 this.setState({
                     teams,
@@ -69,6 +109,9 @@ class ViewTeam extends React.Component{
                     newTeamToggleModal : false,
                 })
             });    
+        Axios.post(COURSE_API_URL + 'teamEmployees/', this.state.newEmployeeData).then((response)=>{
+            
+        })
     }
     getTeamById(id){
         Axios.get(COURSE_API_URL + `team/${id}`).then((response)=>{
@@ -83,54 +126,44 @@ class ViewTeam extends React.Component{
             })
         });
     }
+
+    createEmpForms = () =>{
+        let frms = []
+            for (let i = 0; i < this.state.members; i++) {
+                frms.push(
+                <FormGroup>
+                    <InputGroupAddon addonType="prepend">
+                        <InputGroupText><i className="fas fa-hiking mr-2" ></i></InputGroupText>
+                        <Input type="select" name="member"
+                        //  value={this.state.newTeamData.member} onChange = {(e) =>
+                        //     {
+                        //         let { newTeamData } = this.state;        
+                        //         // newTeamData.member = e.target.value;        
+                        //         this.setState({ newTeamData });        
+                        //     }}
+                        >
+                            {/* <option>Member</option>
+                            {
+                                this.state.employees.map((employee) =>{
+                                    return(
+                                        <option value={employee.id}>{employee.first_name}</option>
+                                    )
+                                })
+                            } */}
+                        </Input>
+                    </InputGroupAddon>
+                </FormGroup>   
+                )
+            }
+            return frms;
+        }
     
     render(){
 
-        const pagi = () =>{
-            return(
-                <div>
-                <Pagination aria-label="Page navigation example">
-                    <PaginationItem>
-                        <PaginationLink first href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink previous href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink href="#">
-                        1
-                        </PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink href="#">
-                        2
-                        </PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink href="#">
-                        3
-                        </PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink href="#">
-                        4
-                        </PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink href="#">
-                        5
-                        </PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink next href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink last href="#" />
-                    </PaginationItem>
-                </Pagination>
-            </div>
-            );
-        }
+        
+        
+
+
         let newTeam = this.state.teams.map(()=>{
             return(
                 <Modal isOpen={this.state.newTeamToggleModal} toggle={this.newTeamToggle.bind(this)}>
@@ -175,6 +208,7 @@ class ViewTeam extends React.Component{
                                         this.setState({ newTeamData });        
                                     }}
                                 >
+                                    <option>Leader</option>
                                     {
                                         this.state.employees.map((employee) =>{
                                             return(
@@ -194,6 +228,21 @@ class ViewTeam extends React.Component{
                                 }} /> */}
                             </InputGroupAddon>
                         </FormGroup>   
+                        <FormGroup>
+                            <InputGroupAddon addonType="prepend">
+                                <InputGroupText><i className="fas fa-calendar-alt mr-2" ></i></InputGroupText>
+                                <Input type = 'number' min='2' max='10' placeholder="Number of Employee" value={this.state.members} onChange={(e) =>
+                                {
+                                    let { memb} = this.state;
+    
+                                    memb = e.target.value;
+    
+                                    this.setState({ members:memb });                                    
+    
+                                }} />
+                            </InputGroupAddon>
+                        </FormGroup>
+                        {this.createEmpForms()}
                         <FormGroup>
                             <InputGroupAddon addonType="prepend">
                                 <InputGroupText><i className="fas fa-calendar-alt mr-2" ></i></InputGroupText>
@@ -222,31 +271,28 @@ class ViewTeam extends React.Component{
             return(
                 // <Toast color='danger'>
                 // <div style={{width:'800px'}} className='card mb-3'>
-                <MDBContainer className='card mb-2'>
+                <MDBContainer className='card mb-2' key={team.team_id}>
                     <ToastHeader>   
                     <Badge color="secondary">View</Badge> &nbsp;                 
                     <strong>{team.team_name}</strong>&nbsp;
                     <small>{team.start_date}</small>
                     </ToastHeader>
                     <ToastBody>
-                    This is a toast with a primary icon — check it out!
+                    {/* This is a toast with a primary icon — check it out! */}
+                        <Button color="primary" onClick={this.toggle.bind(this)} style={{ marginBottom: '1rem' }}>Show</Button>
+                        <Collapse isOpen={this.state.isOpen}>
+                            <Card>
+                            <CardBody>
+                                Leader:                                
+
+                            </CardBody>
+                            </Card>
+                        </Collapse>
                     </ToastBody>
                 </MDBContainer>
                 // </Toast>
             )
         })
-        const titleTeam = ((e) => {
-            return(
-                <div className="card-body text-white text-center py-1 px-8 my-3">
-                    <h1 className="mb-4">
-                        <strong>Team</strong>
-                    </h1>
-                    <p>
-                        <strong>Create Team & achive the goal</strong>
-                    </p>
-                </div>     
-            );     
-        });
         return(
             <div>
                 <section className="card aqua-gradient wow fadeIn  text-uppercase">
@@ -259,11 +305,11 @@ class ViewTeam extends React.Component{
                             <strong>Create Team & achive the goal</strong>
                         </p>
                     </div>  
+                    {TeamSubNav}
                 </section>
-                
                 <section>
-                        {/* <MDBContainer> */}
                             <div className="card mb-2 mt-2 pt-2 pb-2 text-center wow fadeIn">
+                                
                                 <span className="pull-right">
                                 <MDBBtn 
                                 color = 'primary'
@@ -276,14 +322,8 @@ class ViewTeam extends React.Component{
                                 </span>
                                 {newTeam}
                             </div>
-                        {/* </MDBContainer> */}
-                        <div>
-                            {/* {newTeam} */}
-                        </div>
                 </section>
-                {/* <div className="container px-5"> */}
                 <section>
-                    {/* <MDBContainer> */}
                     <div className="card p-4" style={{
                         display: "flex",
                         justifyContent: "center",
@@ -293,9 +333,7 @@ class ViewTeam extends React.Component{
                         {viewTeam}
                     </div>
                     
-                    {pagi}
-                </section>                        
-                {/* </div> */}
+                </section>    
             </div>
         );
     }

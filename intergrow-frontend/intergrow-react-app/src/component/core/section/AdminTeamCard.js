@@ -6,6 +6,12 @@ import { Label, Progress } from 'reactstrap';
 class AdminTeamCard extends React.Component{
     render(){
         return(
+            <div className="card mb-4 mt-3 wow fadeIn">
+
+            <div className="card-header font-weight-bold">
+                <span><h2>Team Activities</h2></span>
+            </div>
+            <span className="pull-right m-2">
             <MDBContainer>   
                 <Label>Team 1</Label>                  
                 <Progress value="25" className="pull-right mt-2 mb-2">25%</Progress>
@@ -24,6 +30,10 @@ class AdminTeamCard extends React.Component{
                     <Progress bar color="danger" value="5">!!</Progress>
                 </Progress>  
             </MDBContainer>  
+                                         
+            </span>
+            </div>
+
         )
     }
 }

@@ -31,25 +31,32 @@ class header extends React.Component
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
-            &nbsp; &nbsp;&nbsp; &nbsp;
-            <MDBNavItem >
-              <a className="white-text" href="/home">Home</a>
+            <MDBNavItem className="pt-2 pl-5">
+              <a className="white-text pt-5" href="/home">Home</a>
             </MDBNavItem>
-            &nbsp; &nbsp;
-            <MDBNavItem>
+            {/* <MDBNavItem>
               <a className="white-text" href="/employeelist">Empoyee</a>
             </MDBNavItem>
             &nbsp; &nbsp;
             <MDBNavItem>
               <a className="white-text" href="/team">Team</a>
-            </MDBNavItem>
-            &nbsp; &nbsp;
-            <MDBNavItem>
+            </MDBNavItem> */}
+            <MDBNavItem className="pt-2 pl-2"> 
               <a className="white-text" href="/goals">Goals</a>
             </MDBNavItem>
-            &nbsp; &nbsp;
-            <MDBNavItem>
+            <MDBNavItem className="pt-2 pl-2">
               <a className="white-text" href="/help">Helps & Response</a>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                 Create
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default white-text">
+                  <MDBDropdownItem href="/employeelist/"><MDBIcon icon="eye" className="pr-2"/>Empoyee</MDBDropdownItem>
+                  <MDBDropdownItem href="/team/"><MDBIcon icon="eye" className="pr-2"/>Team</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
             
            
@@ -82,12 +89,12 @@ class header extends React.Component
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
-                 User <MDBIcon icon="user" />
+                 User <MDBIcon icon="user" className="pl-2"/>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/register">Register</MDBDropdownItem>
-                  <MDBDropdownItem href="/login">Login</MDBDropdownItem>
-                  <MDBDropdownItem href="/logout">Logout</MDBDropdownItem>
+                  <MDBDropdownItem href="/login"><MDBIcon icon="sign-in-alt" className="pr-2"/>Login</MDBDropdownItem>
+                  <MDBDropdownItem href="/logout"><MDBIcon icon="sign-out-alt" className="pr-2"/>Logout</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
