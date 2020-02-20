@@ -7,6 +7,8 @@ import RegisterUser from './account/register-user';
 import Home from './core/home';
 
 
+import {Route,Switch} from 'react-router-dom';
+
 
 class App extends React.Component{
   

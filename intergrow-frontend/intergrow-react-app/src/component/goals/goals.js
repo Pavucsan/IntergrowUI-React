@@ -9,7 +9,7 @@ class goals extends React.Component{
 
     render(){
         return(
-            <div className='full'>          
+            <div className=''>          
                 <HeaderGoal/>   
 
                 <GoalsSetGoals/>

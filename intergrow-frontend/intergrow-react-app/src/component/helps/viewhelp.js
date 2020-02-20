@@ -86,26 +86,27 @@ class Viewhelp extends React.Component{
 
         let viewAllHelp = this.state.helps.map((help)=>{
             return(
-                <div className="p-1 bg-primary my-2 mr-2 ml-2 rounded">
+                <div className="p-1 #bbdefb blue lighten-4 my-2 mr-2 ml-2 rounded">
                     <MDBContainer className='card'>
-                        <ToastHeader>
-                            Reactstrap
-                        </ToastHeader>
+                        {/* <ToastHeader>
+                            {help.}
+                        </ToastHeader> */}
                         <ToastBody>
                             {help.help_discription}
                         </ToastBody>                        
                     </MDBContainer>
-                    <hr/>
+                    
                         <MDBBtn 
                             color = 'primary'
-                            onClick = {this.newHelpToggle.bind(this)}
+                            // onClick = {this.newHelpToggle.bind(this)}
                             rounded 
                             >Show Responses</MDBBtn>
                         <MDBBtn 
                             color = 'primary'
-                            onClick = {this.newHelpToggle.bind(this)}
+                            // onClick = {this.newHelpToggle.bind(this)}
                             rounded 
                             >Give Response</MDBBtn>
+                    <hr/>
               </div>
             );
         });

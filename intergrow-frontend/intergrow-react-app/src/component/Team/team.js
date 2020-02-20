@@ -54,8 +54,6 @@ class ViewTeam extends React.Component{
             })
         });        
     }
-
-
     toggle(){
         if(this.state.isOpen === false){
             this.setState({
@@ -134,7 +132,7 @@ class ViewTeam extends React.Component{
                 <FormGroup>
                     <InputGroupAddon addonType="prepend">
                         <InputGroupText><i className="fas fa-hiking mr-2" ></i></InputGroupText>
-                        <Input type="select" name="member"
+                        <Input type="select" name="member" placeholder='Member '
                         //  value={this.state.newTeamData.member} onChange = {(e) =>
                         //     {
                         //         let { newTeamData } = this.state;        
@@ -142,14 +140,14 @@ class ViewTeam extends React.Component{
                         //         this.setState({ newTeamData });        
                         //     }}
                         >
-                            {/* <option>Member</option>
-                            {
-                                this.state.employees.map((employee) =>{
-                                    return(
-                                        <option value={employee.id}>{employee.first_name}</option>
-                                    )
-                                })
-                            } */}
+                            <option>Member {i+1}</option>
+                                {/* {
+                                    this.state.employees.map((employee) =>{
+                                        return(
+                                            <option value={employee.id}>{employee.first_name}</option>
+                                        )
+                                    })
+                                } */}
                         </Input>
                     </InputGroupAddon>
                 </FormGroup>   
@@ -159,11 +157,6 @@ class ViewTeam extends React.Component{
         }
     
     render(){
-
-        
-        
-
-
         let newTeam = this.state.teams.map(()=>{
             return(
                 <Modal isOpen={this.state.newTeamToggleModal} toggle={this.newTeamToggle.bind(this)}>
@@ -279,7 +272,7 @@ class ViewTeam extends React.Component{
                     </ToastHeader>
                     <ToastBody>
                     {/* This is a toast with a primary icon — check it out! */}
-                        <Button color="primary" onClick={this.toggle.bind(this)} style={{ marginBottom: '1rem' }}>Show</Button>
+                    <Button color="primary" className='pt-0 mt-0' style={{height:'20px'}} onClick={this.toggle.bind(this)}>Show</Button>
                         <Collapse isOpen={this.state.isOpen}>
                             <Card>
                             <CardBody>

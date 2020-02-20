@@ -1,12 +1,5 @@
-import React, { Component } from "react";
-import
-{
-  MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
-  MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
-} from "mdbreact";
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Link } from "react-router-dom";
-import Route from 'react-router-dom/Route';
+import { MDBCollapse, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNavItem } from "mdbreact";
+import React from "react";
 
 
 class header extends React.Component
@@ -19,13 +12,11 @@ class header extends React.Component
   {
     this.setState({ isOpen: !this.state.isOpen });
   }
-
   render()
   {
     return (
       <MDBNavbar color="unique-color-dark" dark expand="md" className="fixed-top">
         <MDBNavbarBrand>
-
           <strong className="white-text"><a className="white-text h4-responsive font-weight-bold" href="/"> Intergrow</a></strong>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
@@ -34,23 +25,16 @@ class header extends React.Component
             <MDBNavItem className="pt-2 pl-5">
               <a className="white-text pt-5" href="/home">Home</a>
             </MDBNavItem>
-            {/* <MDBNavItem>
-              <a className="white-text" href="/employeelist">Empoyee</a>
-            </MDBNavItem>
-            &nbsp; &nbsp;
-            <MDBNavItem>
-              <a className="white-text" href="/team">Team</a>
-            </MDBNavItem> */}
-            <MDBNavItem className="pt-2 pl-2"> 
+            <MDBNavItem className="pt-2 pl-4" nav caret> 
               <a className="white-text" href="/goals">Goals</a>
             </MDBNavItem>
-            <MDBNavItem className="pt-2 pl-2">
-              <a className="white-text" href="/help">Helps & Response</a>
+            <MDBNavItem className="pt-2 pl-4" nav caret>
+              <a className="white-text" href="/help">Helps</a>
             </MDBNavItem>
-            <MDBNavItem>
+            <MDBNavItem className="pl-4">
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
-                 Create
+                 Profiles
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default white-text">
                   <MDBDropdownItem href="/employeelist/"><MDBIcon icon="eye" className="pr-2"/>Empoyee</MDBDropdownItem>
@@ -58,34 +42,8 @@ class header extends React.Component
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
-            
-           
-         {/* <MDBNavItem>
-              <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <div className="d-none d-md-inline">Dropdown</div>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavItem> */}
           </MDBNavbarNav>
-          
           <MDBNavbarNav right>
-            {/* <MDBNavItem>
-              <MDBNavLink className="waves-effect waves-light" to="#!">
-                <MDBIcon fab icon="twitter" />
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink className="waves-effect waves-light" to="#!">
-                <MDBIcon fab icon="google-plus-g" />
-              </MDBNavLink>
-            </MDBNavItem> */}
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>

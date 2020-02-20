@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "mdbreact/dist/css/mdb.css";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import RegisterUser from './component/account/register-user';
 import App from './component/App';
 import Footer from './component/core/footer';
@@ -17,13 +18,11 @@ import Viewhelp from './component/helps/viewhelp';
 import NotFoundPage from './component/notfoundpage/404notfound';
 import ViewTeam from './component/Team/team';
 import './css/index.css';
-
-
-
+import GoalProgress from "./component/goals/goal_progress_page";
 
 
 const routing = (
-    <Router>
+    <BrowserRouter>
         <div  className="mt-5 pt-3">
             <Switch>
                 <Route exact path ='/home' component = {Home}/>
@@ -34,10 +33,11 @@ const routing = (
                 <Route path = '/help' component = {Viewhelp}/>
                 <Route path = '/team' component = {ViewTeam}/>
                 <Route path = '/register' component = {RegisterUser}/>
+                <Route path = '/goal_progress/:id' component = {GoalProgress}/>
                 <Route component = {NotFoundPage}/>
             </Switch>
         </div>
-    </Router>
+    </BrowserRouter>
 )
 ReactDOM.render(routing, document.getElementById('root'));
 ReactDOM.render(<Header/>, document.getElementById('header'));
