@@ -5,9 +5,9 @@ import { Button, FormGroup, Input, InputGroupAddon, InputGroupText, Label, Modal
 import { COURSE_API_URL } from '../../../constants/utill';
 
 class GoalsSetGoals extends React.Component{
-    constructor(){
-        super();
-        this.state = {
+    // constructor(){
+    //     super();
+        state = {
             goals:[],
             teams:[],
             employees:[],
@@ -21,13 +21,14 @@ class GoalsSetGoals extends React.Component{
             },
             goalOption:'team',
         }
-        this.onRadioChanged = this.onRadioChanged.bind(this);
-        this.getEmployee();
-        this.getTeam();
-    }
+        
+    // }
 
     componentWillMount(){
         this.getGoals();
+        this.onRadioChanged = this.onRadioChanged.bind(this);
+        this.getEmployee();
+        this.getTeam();
     }
 
     createGoal(){

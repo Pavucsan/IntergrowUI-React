@@ -19,6 +19,7 @@ import NotFoundPage from './component/notfoundpage/404notfound';
 import ViewTeam from './component/Team/team';
 import './css/index.css';
 import GoalProgress from "./component/goals/goal_progress_page";
+import TeamDetails from "./component/Team/teamDetails";
 
 
 const routing = (
@@ -33,7 +34,8 @@ const routing = (
                 <Route path = '/help' component = {Viewhelp}/>
                 <Route path = '/team' component = {ViewTeam}/>
                 <Route path = '/register' component = {RegisterUser}/>
-                <Route path = '/goal_progress/:id' component = {GoalProgress}/>
+                <Route path = '/goal/:id' component = {GoalProgress}/>
+                <Route path = '/team/:id' component = {TeamDetails}/>
                 <Route component = {NotFoundPage}/>
             </Switch>
         </div>

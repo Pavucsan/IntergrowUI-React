@@ -1,8 +1,9 @@
 import Axios from 'axios';
-import { MDBContainer } from 'mdbreact';
+import { MDBContainer, MDBIcon } from 'mdbreact';
 import React from 'react';
-import { Badge, Button, Card, CardBody, Collapse, ToastBody, ToastHeader } from 'reactstrap';
+import { Badge, Button, Card, CardBody, Collapse, ToastBody, ToastHeader, Row, Jumbotron } from 'reactstrap';
 import { COURSE_API_URL } from '../../../constants/utill';
+import { Link } from 'react-bootstrap/lib/Navbar';
 
 
 class ChildComponent extends React.Component{
@@ -67,34 +68,23 @@ class GoalsView extends React.Component{
             })
         }
     }
-
-    
-
-
-
     render(){
 
         let viewGoals = this.state.goals.map((goal) =>{
             return(
-                <MDBContainer className='card mb-2' key={goal.id}>
-                    <ToastHeader>   
-                    <Badge color="secondary">View</Badge> &nbsp;   
 
+                <MDBContainer className='card mb-2  #90caf9 blue lighten-3' key={goal.id}>
+                    <a href={'goal/' + goal.id} >   
+                    <ToastHeader>
+                        
+                        <Badge color="warning">
+                        Edit
+                        </Badge> &nbsp;
                     {/* <ChildComponent tmId={1}/>    */}
-
-                    &nbsp;
+                    &nbsp; {goal.goal_discription}&nbsp; 
                     <small>{goal.start_date}</small>
                     </ToastHeader>
-                    <ToastBody>
-                        <Collapse isOpen={this.state.isOpen}>
-                            {/* <Card> */}
-                            <CardBody>
-                                {goal.goal_discription}
-                            </CardBody>
-                            {/* </Card> */}
-                        </Collapse>
-                        <Button color="primary" className='pt-0 mt-0' style={{height:'20px'}} onClick={this.toggle.bind(this)}>Show</Button>
-                    </ToastBody>
+                    </a>
                 </MDBContainer>
             )
         })
@@ -102,14 +92,35 @@ class GoalsView extends React.Component{
 
         return(
             <section>
-            <div className="card p-4" style={{
+            {/* <div className="card p-4" style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor:"rgb(175, 200, 209)"
-                }}>
-                {viewGoals}
-            </div>
+                }}> */}
+                <div className='mr-4 ml-4 mt-3 mb-2 text-align-center pt-4'>
+                    <div className='row'>
+                        <MDBContainer className='col-lg-7 col-md-7 col-sm-12 mr-0'>
+                            <Jumbotron>
+                                {viewGoals}
+                            </Jumbotron>                       
+                        </MDBContainer>
+
+                        <MDBContainer className=" col-lg-4 col-md-4 col-sm-12 ml-0">
+                            <Jumbotron>
+                                {/* <h1 className="display-5"></h1> */}
+                                    <p className="lead">Top Goal Activities</p>
+                                <hr className="my-2" />
+                                <p><MDBIcon icon='calendar-alt'/> Start Date : </p>
+                                <p><MDBIcon icon='calendar-alt'/> End Date : </p>
+                                <p className="lead">                            
+                                <Button type="button" className="btn btn-secondary btn-rounded">Add Progress</Button>
+                                </p>
+                            </Jumbotron>
+                        </MDBContainer>
+                    </div>
+                </div>
+            {/* </div> */}
         </section>      
         )
     }

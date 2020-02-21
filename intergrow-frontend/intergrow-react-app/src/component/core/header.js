@@ -25,13 +25,13 @@ class header extends React.Component
             <MDBNavItem className="pt-2 pl-5">
               <a className="white-text pt-5" href="/home">Home</a>
             </MDBNavItem>
-            <MDBNavItem className="pt-2 pl-4" nav caret> 
-              <a className="white-text" href="/goals">Goals</a>
+            <MDBNavItem className="pt-2 pl-3" nav caret> 
+              <a className="white-text" href="/goals">Goal</a>
             </MDBNavItem>
-            <MDBNavItem className="pt-2 pl-4" nav caret>
-              <a className="white-text" href="/help">Helps</a>
+            <MDBNavItem className="pt-2 pl-3" nav caret>
+              <a className="white-text" href="/help">Help</a>
             </MDBNavItem>
-            <MDBNavItem className="pl-4">
+            <MDBNavItem className="pl-3">
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
                  Profiles
