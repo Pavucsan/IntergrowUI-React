@@ -1,9 +1,8 @@
 import Axios from 'axios';
-import { MDBContainer, MDBIcon } from 'mdbreact';
+import { MDBContainer } from 'mdbreact';
 import React from 'react';
-import { Badge, Button, Card, CardBody, Collapse, ToastBody, ToastHeader, Row, Jumbotron } from 'reactstrap';
+import { Badge, Jumbotron, Label, Progress, ToastHeader } from 'reactstrap';
 import { COURSE_API_URL } from '../../../constants/utill';
-import { Link } from 'react-bootstrap/lib/Navbar';
 
 
 class ChildComponent extends React.Component{
@@ -92,12 +91,6 @@ class GoalsView extends React.Component{
 
         return(
             <section>
-            {/* <div className="card p-4" style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor:"rgb(175, 200, 209)"
-                }}> */}
                 <div className='mr-4 ml-4 mt-3 mb-2 text-align-center pt-4'>
                     <div className='row'>
                         <MDBContainer className='col-lg-7 col-md-7 col-sm-12 mr-0'>
@@ -108,14 +101,16 @@ class GoalsView extends React.Component{
 
                         <MDBContainer className=" col-lg-4 col-md-4 col-sm-12 ml-0">
                             <Jumbotron>
-                                {/* <h1 className="display-5"></h1> */}
                                     <p className="lead">Top Goal Activities</p>
-                                <hr className="my-2" />
-                                <p><MDBIcon icon='calendar-alt'/> Start Date : </p>
-                                <p><MDBIcon icon='calendar-alt'/> End Date : </p>
-                                <p className="lead">                            
-                                <Button type="button" className="btn btn-secondary btn-rounded">Add Progress</Button>
-                                </p>
+                                <hr className="my-0" />
+                                <MDBContainer>   
+                                    <Label>Completed</Label>                  
+                                    <Progress value="25" color="success" className="pull-right mt-2 mb-2">25%</Progress>
+                                    <Label>In Progress</Label>     
+                                    <Progress value={50} color="warning" className="pull-right mt-2 mb-2">50%</Progress>
+                                    <Label>Deadline Missed</Label>     
+                                    <Progress value={75} color="danger" className="pull-right mt-2 mb-2">75%</Progress>
+                                </MDBContainer>  
                             </Jumbotron>
                         </MDBContainer>
                     </div>

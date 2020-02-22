@@ -6,17 +6,33 @@ import { COURSE_API_URL } from '../../constants/utill';
 import CreateEmployee from './sections/createEmployee';
 import EmployeeHeader from './sections/employeeHeader';
 import Axios from 'axios';
+import { Redirect } from 'react-router';
+import EmployeeTableView from './sections/employeeTableView';
+import EmpTab from './sections/employeeTable/empTab';
 
 
 // const COURSE_API_URL = 'http://localhost:8000/';
 
 class EmployeeList extends React.Component {
-    state = {
-        employees: [],  
+    constructor(props){
+        super(props);
+        this.state = {
+            employees: [],  
+            redirect:false,
+        }
     }
+
+    
 // Initial stage
     componentWillMount()
     {
+        if(sessionStorage.getItem('userData')){
+            console.log('call user feed');
+          }
+          else{
+            this.setState({redirect:true})
+          }
+
         this._refreshEmployee();
     }
     _refreshEmployee()
@@ -26,41 +42,15 @@ class EmployeeList extends React.Component {
             this.setState({
                 employees: response.data
             });
-            console.log(this.state.employees);
+            // console.log(this.state.employees);
         });
     }
-// End
-        
-    removeEmployee(id){
-        Axios.delete(COURSE_API_URL +  `employee/${id}`).then((response) =>{
-            console.log(response.data);
-        })
-    }
-
-
+// End    
     render()
     {
-            let employeeRaw = this.state.employees.map((employee) =>
-            {    
-                return (
-                    <tr key={employee.id}>
-                        {/* contenteditable="true" */}
-                        <td className="pt-3-half" >{employee.employee_id}</td>
-                        <td className="pt-3-half" >{employee.first_name}</td>
-                        <td className="pt-3-half" >{employee.email}</td>
-                        <td className="pt-3-half" >{employee.phone_number}</td>
-                        <td className="pt-3-half">
-                           <span className="table-remove"><button type="button"
-                                className="btn btn-warning btn-rounded btn-sm my-0">Edit</button></span>
-                        </td>
-                        <td>
-                            <span className="table-remove"><button type="button"
-                                className="btn btn-danger btn-rounded btn-sm my-0" onClick={this.removeEmployee(employee.id)}>Remove</button></span>
-                        </td>
-                    </tr>
-                )
-            });
-    
+        if(this.state.redirect){
+            return(<Redirect to={'/login'}/>)
+        }
 
         return (
 
@@ -68,37 +58,12 @@ class EmployeeList extends React.Component {
                 <section class="card aqua-gradient wow fadeIn">
                     <EmployeeHeader/>
                 </section>
-                    
-                <section>
-                    <CreateEmployee/>                      
-                </section>  
+              
+                    <CreateEmployee/>      
 
-                    <div class="container px-5">
-                    <section>
-                        <MDBContainer className="card">
-                            <h3 className="card-header text-center font-weight-bold text-uppercase py-4">Employees</h3>
-                            <div className="card-body">
-                                <div id="table" className="table-editable">                           
-                                    <table className="table table-bordered table-responsive-md table-striped text-center">
-                                        <thead>
-                                            <tr>
-                                                <th className="text-center">Employee Id</th>
-                                                <th className="text-center">Name</th>
-                                                <th className="text-center">Email</th>
-                                                <th className="text-center">Phone No.</th>
-                                                <th className="text-center">Edit</th>
-                                                <th className="text-center">Remove</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {employeeRaw}
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </MDBContainer>                     
-                    </section> 
+                <div class="container ">
+                    {/* <EmployeeTableView employees={this.state.employees}/> */}
+                    <EmpTab/>
                 </div>
             </div>
 

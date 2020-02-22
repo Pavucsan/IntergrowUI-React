@@ -96,56 +96,6 @@ class GoalsSetGoals extends React.Component{
         })
     }
 
-    hh = () =>{
-        if(this.state.goalOption === 'team'){
-            console.log(this.state.goalSelectOption)
-            return(                
-                <FormGroup >
-                <InputGroupAddon addonType="prepend">
-                    <InputGroupText><i className="fas fa-id-card-alt mr-2" ></i></InputGroupText>
-                        <Input type="select" name="teamIn" 
-                        value={this.state.newGoalData.team}
-                                >
-                                    <option>Team</option>
-                                    {
-                                        this.state.teams.map((team) =>{
-                                            return(
-                                                <option value={team.id}>{team.team_name}</option>
-                                            )
-                                        })
-                                    }
-                                </Input>
-                    </InputGroupAddon>
-                </FormGroup> 
-            )
-
-        }
-        else{
-            return(
-                <FormGroup>
-                    <InputGroupAddon addonType="prepend">
-                        <InputGroupText><i className="fas fa-id-card-alt mr-2" ></i></InputGroupText>
-                        <Input type="select" name="employeeIn" 
-                        // value={this.state.newTeamData.leader}
-                                >
-                                    <option>Team</option>
-                                    {
-                                        this.state.employees.map((employee) =>{
-                                            return(
-                                                <option value={employee.id}>{employee.first_name} {employee.last_name}</option>
-                                            )
-                                        })
-                                    }
-                                </Input>
-                    </InputGroupAddon>
-                </FormGroup>  
-
-            )
-
-        }
-    }
-
-
     render(){
         
         return(

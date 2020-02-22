@@ -1,0 +1,74 @@
+import React, {useState, useEffect} from 'react';
+import Axios from 'axios';
+import { COURSE_API_URL } from '../../../../constants/utill';
+import EmpPosts from './empPost';
+import EmpPagination from './empPagination';
+import { MDBContainer } from 'mdbreact';
+ 
+const EmpTab = () =>{
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(2);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            setLoading(true);
+            const res = await Axios.get(COURSE_API_URL + 'employees/');
+            setPosts(res.data);
+            setLoading(false);
+        };
+        // call the function 
+        fetchPosts();
+        // its never ending loops so, for the stop use, []
+    }, []);
+
+    // get current posts
+    const indexOfLastPage = currentPage * postsPerPage;
+    const indexOfFirstPage = indexOfLastPage - postsPerPage;
+    const currentPosts = posts.slice(indexOfFirstPage, indexOfLastPage); 
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+
+
+    return(
+        <div>
+            {/* <EmpPosts posts={posts} loading={loading}/> */}
+            {/* <EmpPagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/> */}
+            {/* <EmpPosts posts={currentPosts} loading={loading}/> */}
+
+            <section>
+                <MDBContainer className="card w-100">
+                    <h3 className="card-header text-center font-weight-bold text-uppercase py-4">Employees</h3>
+                    <div className="card-body">
+                        <div id="table" className="table-editable">                           
+                            <table className="table table-bordered table-responsive-md table-striped text-center">
+                                <thead>
+                                    <tr>
+                                        <th className="text-center">Employee Id</th>
+                                        <th className="text-center">Name</th>
+                                        <th className="text-center">Email</th>
+                                        <th className="text-center">Phone No.</th>
+                                        <th className="text-center">Edit</th>
+                                        <th className="text-center">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                <EmpPosts posts={currentPosts} loading={loading}/>
+
+                                </tbody>
+                            </table>
+                            <EmpPagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/>
+
+                        </div>
+                    </div>
+                </MDBContainer>                     
+            </section> 
+
+            {/* Add table for employee */}
+
+        </div>
+    )
+}
+export default EmpTab;

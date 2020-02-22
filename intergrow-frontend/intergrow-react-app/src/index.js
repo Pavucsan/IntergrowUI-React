@@ -27,6 +27,7 @@ const routing = (
         <div  className="mt-5 pt-3">
             <Switch>
                 <Route exact path ='/home' component = {Home}/>
+                <Route exact path="/login" component={App} />
                 <Route exact path="/" component={App} />
                 <Route path ='/employee' component = {EmployeeView}/>
                 <Route path ='/employeelist' component = {EmployeeList}/>
@@ -42,5 +43,7 @@ const routing = (
     </BrowserRouter>
 )
 ReactDOM.render(routing, document.getElementById('root'));
+
+
 ReactDOM.render(<Header/>, document.getElementById('header'));
 ReactDOM.render(<Footer/>, document.getElementById('footer'));

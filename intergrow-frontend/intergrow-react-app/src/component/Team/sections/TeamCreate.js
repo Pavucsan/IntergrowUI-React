@@ -7,40 +7,43 @@ import { COURSE_API_URL } from '../../../constants/utill';
 
 
 class CreateTeam extends React.Component{
-    state = {
-        teams : [],
-        employees:[],
-        leader:[],
-        today:"02/13/2020",
-        newTeamData :{
-            team_id:'',
-            team_name:'',
-            leader:'',
-            start_date:''
-        },
-        
-        newEmployeeData:{
-            team_id:'',
-            employee_id:''
-        },
-        
 
-        members:2,
-        
-        isOpen : false,
-        newTeamToggleModal : false,        
+    constructor(props){
+        super(props);
+        console.log(this.props.employees);
+        this.state = {
+            teams : [],
+            today:"02/13/2020",
+            newTeamData :{
+                team_id:'',
+                team_name:'',
+                leader:'',
+                start_date:''
+            },
+            
+            newEmployeeData:{
+                team_id:'',
+                employee_id:''
+            },
+            members:2,
+            
+            isOpen : false,
+            newTeamToggleModal : false,        
+        }
+
     }
-    componentWillMount(){
-        this.getEmployee();
-    }
-    getEmployee(){
-        Axios.get(COURSE_API_URL + `employee/`).then((response) =>{
-            // console.log(response.data);
-            this.state({
-                employees : response.data,
-            })
-        })
-    }
+    
+    // componentWillMount(){
+    //     this.getEmployee();
+    // }
+    // getEmployee(){
+    //     Axios.get(COURSE_API_URL + `employee/`).then((response) =>{
+    //         // console.log(response.data);
+    //         this.state({
+    //             employees : response.data,
+    //         })
+    //     })
+    // }
 
     getLeader(id){
         Axios.get(COURSE_API_URL + `employee/${id}`).then((response) =>{
@@ -176,11 +179,13 @@ class CreateTeam extends React.Component{
                                 >
                                     <option>Leader</option>
                                     {
-                                        this.state.employees.map((employee) =>{
+                                       
+                                        this.props.employees.map((employee) =>{
                                             return(
                                                 <option value={employee.id}>{employee.first_name}</option>
                                             )
                                         })
+                                        
                                     }
                                 </Input>
                             </InputGroupAddon>

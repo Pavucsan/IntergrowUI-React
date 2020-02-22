@@ -1,17 +1,30 @@
 import axios from 'axios';
-import { MDBBtn } from 'mdbreact';
+import { MDBBtn, MDBContainer } from 'mdbreact';
 import React from "react";
 import { COURSE_API_URL } from '../../constants/utill';
+import EmployeeCardView from './sections/employeeCardView';
+import { Redirect } from 'react-router';
 
 
 class EmployeeView extends React.Component {
-    state = {
-        employees: []         
+    constructor(props){
+        super(props);
+        this.state = {
+            employees: [],  
+            redirect:false,
+        }
     }
 
 // Initial stage
     componentWillMount()
     {
+        if(sessionStorage.getItem('userData')){
+            console.log('call user feed');
+          }
+          else{
+            this.setState({redirect:true})
+          }
+
         this._refreshProject();
     }
 
@@ -29,8 +42,12 @@ class EmployeeView extends React.Component {
 // End
 
     render()
-    {
-        let employeeRaw = this.state.employees.map((employee) =>
+    {        
+        if(this.state.redirect){
+            return(<Redirect to={'/login'}/>)
+        }
+
+    let employeeRaw = this.state.employees.map((employee) =>
         {    
             return (
                 <tr key={employee.employee_id}>
@@ -55,8 +72,9 @@ class EmployeeView extends React.Component {
     
 
         return (
+            
 
-            <div className="full">
+            <div className="">
                 <section class="card aqua-gradient wow fadeIn  text-uppercase">
                 {/* <!-- Content --> */}
                 <div class="card-body text-white text-center py-1 px-8 my-3">
@@ -70,16 +88,22 @@ class EmployeeView extends React.Component {
                 {/* <!-- Content --> */}
                 </section>
                 <section>
-                    <div className="card mb-4 mt-2 pt-2 pb-2 wow fadeIn text-center">
+                    <div className="card mb-2 mt-2 pt-2 pb-2 wow fadeIn">
 
-                        <span className="pull-right">
+                        <MDBContainer>
                         <MDBBtn rounded href="/employeelist" className={'btn btn-info'} style = {{'background-color':'blue'}}><i class="fas fa-list mr-2" ></i>Employee List</MDBBtn>
-                        </span>
+                        {/* <MDBBtn rounded href="/employeelist" className={'btn btn-info'} style = {{'background-color':'blue'}}><i class="fas fa-list mr-2 " ></i>Employee List</MDBBtn> */}
+                        
+                        </MDBContainer>
                     </div>
                 </section>
 
-                <div class="container px-5">
-                    <section class="pt-5">
+                <div class="card px-5 #e0f2f1 teal lighten-5 align-items-center">
+                    <section >
+
+                        <EmployeeCardView/>
+
+
                     </section>
                 </div>
                 </div>

@@ -6,20 +6,25 @@ import { Toast, ToastBody, ToastHeader, Spinner } from 'reactstrap';
 
 
 import {COURSE_API_URL} from '../../constants/utill';
+import { Redirect } from 'react-router';
 
 
 class Viewhelp extends React.Component{
 
-    state = {
-        helps:[],
-
-        newHelpData:{
-            id:'',
-            mentee:'',
-            help_discription:'',
-            help_date:''
-        },
-        newHelpToggleModal:false,
+    constructor(props){
+        super(props);
+        this.state = {
+            redirect:false,
+            helps:[],
+            newHelpData:{
+                id:'',
+                mentee:'',
+                help_discription:'',
+                help_date:''
+            },
+            newHelpToggleModal:false,
+            
+        }
     }
 
     // helpActions = new HelpActions();
@@ -53,6 +58,12 @@ class Viewhelp extends React.Component{
     }
     
     componentWillMount(){
+        if(sessionStorage.getItem('userData')){
+            console.log('call user feed');
+        }
+        else{
+            this.setState({redirect:true})
+        }
         this._refreshHelps();
         // this.helpActions._refreshHelps();
     }
@@ -70,6 +81,10 @@ class Viewhelp extends React.Component{
 
 
     render(){
+
+        if(this.state.redirect){
+            return(<Redirect to={'/login'}/>)
+        }
         
         let helpRaw = this.state.helps.map((help) =>
         {    

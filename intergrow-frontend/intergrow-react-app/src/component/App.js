@@ -14,15 +14,9 @@ class App extends React.Component{
   
   render(){
     return (
-      // <Modal isOpen='true' style={{textAlignVertical: 'center'}}>
       <div className='text-center' style={{textAlignVertical: 'center'}}>
-        
           <Login/>
-          {/* <RegisterUser/> */}
-          <Home/>
-      
       </div>
-      // </Modal>
     );
   }
 

@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { MDBContainer } from 'mdbreact';
 import React from 'react';
-import { Badge, Button, CardBody, Collapse, ToastBody, ToastHeader } from 'reactstrap';
+import { Badge, ToastHeader } from 'reactstrap';
 import { COURSE_API_URL } from '../../../constants/utill';
 
 class TeamView extends React.Component{
