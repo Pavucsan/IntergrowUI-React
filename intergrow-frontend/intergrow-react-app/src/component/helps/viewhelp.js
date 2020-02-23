@@ -7,6 +7,8 @@ import { Toast, ToastBody, ToastHeader, Spinner } from 'reactstrap';
 
 import {COURSE_API_URL} from '../../constants/utill';
 import { Redirect } from 'react-router';
+import HelpHeader from './sections/helpHeader';
+import HelpView from './sections/HelpView';
 
 
 class Viewhelp extends React.Component{
@@ -186,21 +188,8 @@ class Viewhelp extends React.Component{
 
         return(
             <main class="">
-                <section class="card aqua-gradient wow fadeIn  text-uppercase">
 
-                    {/* <!-- Content --> */}
-                    <div class="card-body text-white text-center py-1 px-8 my-3">
-
-                        <h1 class="mb-4">
-                            <strong>Help & Response</strong>
-                        </h1>
-                        <p>
-                            <strong>Asking help and response</strong>
-                        </p>
-                    </div>
-                    {/* <!-- Content --> */}
-                    
-                </section>              
+                <HelpHeader/>             
                     
                 
                 <section>
@@ -223,12 +212,12 @@ class Viewhelp extends React.Component{
                     </div>
                 </section>
                 <div class="container px-5">
-                    <section>
-                        {/* <MDBContainer> */}
+                    {/* <section>
                         <div className="mb-4 mt-2 pt-2 pb-2 wow fadeIn">
                             {viewAllHelp}   
                         </div>
-                    </section>                        
+                    </section>                         */}
+                    <HelpView/>
                 </div>
             </main>
         )

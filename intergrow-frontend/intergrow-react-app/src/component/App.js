@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal } from 'reactstrap';
 // import logo from './logo.svg';
 import '../css/App.css';
@@ -10,15 +10,24 @@ import Home from './core/home';
 import {Route,Switch} from 'react-router-dom';
 
 
-class App extends React.Component{
+// class App extends React.Component{
   
-  render(){
+//   render(){
+const App = () => {
+
+    const [token, setToken] = useState('');
+
+    const userLogin = (tok) => {
+      setToken(tok);
+      console.log(token)
+    }
+
     return (
-      <div className='text-center' style={{textAlignVertical: 'center'}}>
-          <Login/>
+      <div className='text-center full' style={{textAlignVertical: 'center'}}>
+          <Login userLogin={userLogin}/>
       </div>
     );
-  }
+  
 
 }
 

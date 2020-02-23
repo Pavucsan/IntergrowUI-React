@@ -84,7 +84,7 @@ class header extends React.Component{
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
-                 User <MDBIcon icon="user" className="pl-2"/>
+                 User {this.props.userLogin}<MDBIcon icon="user" className="pl-2"/>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/register">Register</MDBDropdownItem>

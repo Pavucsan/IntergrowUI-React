@@ -17,7 +17,7 @@ class Login extends React.Component{
 
   componentWillMount(){
     if(sessionStorage.getItem('userData')){
-      console.log('call user feed');
+      // console.log('call user feed');
     }
     else{
       this.setState({redirect:true})
@@ -104,11 +104,11 @@ class Login extends React.Component{
       return(<Redirect to={'home/'}/>)
     }
     return (
-      <div className="full">
+      <div className="pt-5">
         {/* <Button onClick={this.loginToggle.bind(this)}>Login</Button> */}
         {/* <Modal isOpen={this.state.newLoginModal} toggle={this.loginToggle.bind(this)}> */}
         {/* <Modal isOpen='true' toggle={this.loginToggle.bind(this)}> */}
-        <MDBContainer className='card mt-4 w-25' >
+        <MDBContainer className='card' >
           <ModalHeader onClick = {this.loginToggle.bind(this)}>Login User</ModalHeader>
             <ModalBody>
             <FormGroup>

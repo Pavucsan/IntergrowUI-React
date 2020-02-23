@@ -31,15 +31,18 @@ class GoalProgressView extends React.Component{
     getGoal(){
         // console.log(this.props.idx);
         Axios.get(COURSE_API_URL + 'team_goal/'+ this.props.idx).then((response) =>{
-            console.log(response.data)
+            // console.log(response.data);
             this.setState({
                 goals:response.data
             })
         })
     }
     getGoalProgress(){
-        Axios.get(COURSE_API_URL + 'goal_progresses/').then((response)=>{
+        Axios.get(COURSE_API_URL + 'goal/goal_progress/' + this.props.idx).then((response)=>{
             console.log(response.data);
+            this.setState({
+                goal_progress:response.data
+            })
             // if(response.data.goal == this.props.idx){
             //     this.setState({
             //         goal_progress:response.data,
@@ -66,15 +69,24 @@ class GoalProgressView extends React.Component{
                 <div className='row'>
                     <MDBContainer className="col-lg-7 col-md-7 col-sm-12 mr-0">
                         
-                        <Jumbotron>
-                            <h1 className="display-5">Progress</h1>
-                            
-                            <hr className="my-2" />
-                            <p className="lead">Goal Discription</p>
-                            
-                            <p> <MDBIcon icon='calendar-alt'/> Progress Date : </p>
-                            <hr className="my-2" />
-                        </Jumbotron>
+                    <Jumbotron>
+                        <h1 className="display-5">Progress</h1>
+                      { 
+                      this.state.goal_progress.map((gp) => {
+                          return(
+                            <div key={gp.id}>
+                                <hr className="my-2" />
+                                <p className="lead text-success"><strong>{gp.progress_description}</strong><MDBIcon icon='check'className='pl-2'/></p>
+                                
+                          <p> <MDBIcon icon='calendar-alt'/> Progress Date : {gp.progress_date}</p>
+                                <hr className="my-2" />
+                            </div>
+                          )
+
+                      })}  
+                      
+                      </Jumbotron>
+                        
 
                     </MDBContainer>
                 

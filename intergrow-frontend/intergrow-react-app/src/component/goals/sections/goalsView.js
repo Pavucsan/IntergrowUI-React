@@ -73,7 +73,7 @@ class GoalsView extends React.Component{
             return(
 
                 <MDBContainer className='card mb-2  #90caf9 blue lighten-3' key={goal.id}>
-                    <a href={'goal/' + goal.id} >   
+                    <a href={'/goal/' + goal.id} >   
                     <ToastHeader>
                         
                         <Badge color="warning">
