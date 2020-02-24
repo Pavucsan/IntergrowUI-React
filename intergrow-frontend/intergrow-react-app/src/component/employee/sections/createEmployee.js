@@ -9,7 +9,8 @@ class CreateEmployee extends React.Component{
         super(props);
 
         this.state = {
-            employees: [],          
+            employees: [], 
+            groups: [],         
             newEmployeeData:{
                 employee_id: '',
                 full_name:'',
@@ -59,6 +60,16 @@ class CreateEmployee extends React.Component{
     componentWillMount()
     {
         this._refreshEmployee.bind(this);
+        this.getGroups();
+    }
+    getGroups(){
+        Axios.get(COURSE_API_URL + 'groups/').then((response) =>
+        {
+            this.setState({
+                groups: response.data
+            });
+            console.log(this.state.gropus);
+        });
     }
     _refreshEmployee()
     {
@@ -254,7 +265,21 @@ class CreateEmployee extends React.Component{
                                 <hr/>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <Input placeholder="Role" />
+                                        <Input placeholder="Role" 
+                                            type='select'
+                                        >
+                                            <option>Select Role</option>
+                                            {
+                                       
+                                                this.state.groups.map((gp) =>{
+                                                    return(
+                                                        <option value={gp.name}>{gp.name}</option>
+                                                    )
+                                                })
+                                                
+                                            }
+
+                                        </Input>
                                     </InputGroupAddon>
                                 </FormGroup>
                             </ModalBody>

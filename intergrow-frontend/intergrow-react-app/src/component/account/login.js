@@ -108,7 +108,7 @@ class Login extends React.Component{
         {/* <Button onClick={this.loginToggle.bind(this)}>Login</Button> */}
         {/* <Modal isOpen={this.state.newLoginModal} toggle={this.loginToggle.bind(this)}> */}
         {/* <Modal isOpen='true' toggle={this.loginToggle.bind(this)}> */}
-        <MDBContainer className='card' >
+        <MDBContainer className='card align-items-center col-xl-4 col-md-6' >
           <ModalHeader onClick = {this.loginToggle.bind(this)}>Login User</ModalHeader>
             <ModalBody>
             <FormGroup>
@@ -132,7 +132,7 @@ class Login extends React.Component{
                 </InputGroupAddon>
             </FormGroup>   
           </ModalBody>
-          <a className='text-left ml-4 pb-2'>Forget password</a>
+          <a className='text-left  pb-2 text-primary'>Forget password</a>
           <ModalFooter>
             <Button color="primary" rounded='true' onClick = {this.login}>Login</Button>
             {/* <Button color="danger" rounded='true'  onClick = {this.closeToggle.bind(this)} >Cancel</Button> */}

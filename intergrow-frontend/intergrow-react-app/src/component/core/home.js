@@ -116,13 +116,16 @@ class Home extends React.Component {
                       <img src="https://mdbootstrap.com/img/illustrations/drawkit-drawing-man-colour.svg" class="img-fluid" alt="smaple image"/>
                     </div>
                   </div>
-                  <div class="col-md-5 d-flex align-items-center">
+                  <div class="col-md-5 d-flex align-items-center text-justify">
                     <div>
-                      <h3 class="font-weight-bold mb-4">Intergrow</h3>
+                      <h3 class="font-weight-bold mb-4 ">Intergrow</h3>
 
-                      <p>Lorem ipsum dolor sit amet consectetur adip elit. Maiores deleniti explicabo voluptatem quisquam nulla asperiores aspernatur aperiam voluptate et consectetur minima delectus, fugiat eum soluta blanditiis adipisci, velit dolore magnam.</p>
+                      <p class="text-justify">Mentee requests for a help, Mentor reponses to help for the requested activity by Mentee.For the 1st phase we assume that Mentee and Mentor are only responsible for software
+                        development tasks.Assuming that mentee requests help for a code review activity and receive help from a Mentor. Based on completion of this activity, Following data source will be used
+                        to obtain data to relate intergrow activity to real user story and rest of other tracking data.
+                      </p>
 
-                      <button type="button" class="btn btn-orange btn-rounded mx-0">Download</button>
+                      {/* <button type="button" class="btn btn-orange btn-rounded mx-0">Download</button> */}
                     </div>
                   </div>
                 </div>

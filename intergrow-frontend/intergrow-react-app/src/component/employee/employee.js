@@ -97,15 +97,11 @@ class EmployeeView extends React.Component {
                         </MDBContainer>
                     </div>
                 </section>
-
-                <div class="card px-5 #e0f2f1 teal lighten-5 align-items-center">
                     <section >
-
-                        <EmployeeCardView/>
-
-
+                        <div class="card px-5 align-items-center">
+                            <EmployeeCardView/>
+                        </div>
                     </section>
-                </div>
                 </div>
 
         );
