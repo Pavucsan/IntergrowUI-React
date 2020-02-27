@@ -1,6 +1,5 @@
 import { MDBCollapse, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNavItem } from "mdbreact";
 import React from "react";
-import { Redirect } from "react-router";
 
 
 class header extends React.Component{
@@ -11,7 +10,7 @@ class header extends React.Component{
     this.state = {
       isOpen: false,
       isLoggedIn:true,
-      username:'',
+      username:'User'
       
     };
 
@@ -28,8 +27,11 @@ class header extends React.Component{
   componentWillMount()
     {
         if(sessionStorage.getItem('userData')){
-            console.log('call user feed');
-            console.log(sessionStorage.getItem('userData').username);
+            console.log('Header');
+            console.log(sessionStorage.getItem('username'));
+            this.setState({
+              username:sessionStorage.getItem('username')
+            })
         }
         else{
           this.setState({redirect:true, isLoggedIn:false,})
@@ -50,6 +52,16 @@ class header extends React.Component{
     }else{
       button = <MDBDropdownItem onClick={this.logout}><MDBIcon icon="sign-out-alt" className="pr-2"/>Logout</MDBDropdownItem>
     }
+
+    if(this.state.redirect){
+      return(
+        <MDBNavbar color="unique-color-dark" dark expand="md" className="fixed-top">
+          <MDBNavbarBrand>
+            <strong className="white-text"><a className="white-text h4-responsive font-weight-bold" href="/login"> Intergrow</a></strong>
+          </MDBNavbarBrand>
+        </MDBNavbar>
+      )
+    }
     
     return (
       <MDBNavbar color="unique-color-dark" dark expand="md" className="fixed-top">
@@ -62,15 +74,26 @@ class header extends React.Component{
             <MDBNavItem className="pt-2 pl-5">
               <a className="white-text pt-5" href="/home">Dashboard</a>
             </MDBNavItem>
-            <MDBNavItem className="pt-2 pl-3" nav caret> 
+            {/* <MDBNavItem className="pt-2 pl-3" nav caret > 
               <a className="white-text" href="/goals">Goal</a>
+            </MDBNavItem> */}
+            <MDBNavItem className="pl-3">
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret >
+                 Goal
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default white-text">
+                  <MDBDropdownItem href="/individual_goal/"><MDBIcon icon="user" className="pr-2"/>Indivitual Goal</MDBDropdownItem>
+                  <MDBDropdownItem href="/goals/"><MDBIcon icon="users" className="pr-2"/>Team Goal</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
-            <MDBNavItem className="pt-2 pl-3" nav caret>
+            <MDBNavItem className="pt-2 pl-3" nav caret >
               <a className="white-text" href="/help">Help</a>
             </MDBNavItem>
             <MDBNavItem className="pl-3">
               <MDBDropdown>
-                <MDBDropdownToggle nav caret>
+                <MDBDropdownToggle nav caret >
                  Profiles
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default white-text">
@@ -83,13 +106,12 @@ class header extends React.Component{
           <MDBNavbarNav right>
             <MDBNavItem>
               <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                 User {this.props.userLogin}<MDBIcon icon="user" className="pl-2"/>
+                <MDBDropdownToggle nav caret >
+                 <strong className='text-uppercase'>{this.state.username} {this.props.userLogin}</strong><MDBIcon icon="user" className="pl-2"/>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/register">Register</MDBDropdownItem>
-                  {button}
-                  
+                  {button}                  
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>

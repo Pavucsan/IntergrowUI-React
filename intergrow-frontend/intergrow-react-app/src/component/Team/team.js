@@ -49,9 +49,11 @@ class ViewTeam extends React.Component{
             <div>
                 <Header/>
 
-                <CreateTeam employees={this.state.employees}/>
 
                 <TeamView/>
+
+                
+                <CreateTeam employees={this.state.employees}/>
             </div>
         );
     }

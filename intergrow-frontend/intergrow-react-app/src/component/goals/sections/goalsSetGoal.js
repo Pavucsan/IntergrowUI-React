@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { MDBBtn } from 'mdbreact';
+import { MDBBtn, MDBContainer } from 'mdbreact';
 import React from 'react';
 import { Button, FormGroup, Input, InputGroupAddon, InputGroupText, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
 import { COURSE_API_URL } from '../../../constants/utill';
@@ -100,7 +100,14 @@ class GoalsSetGoals extends React.Component{
         
         return(
             <section>
-                <div className="card mb-2 mt-2 pt-2 pb-2 text-center wow fadeIn">
+                {/* <div className=" mb-2 mt-2 pt-2 pb-2  wow fadeIn"> */}
+                <MDBContainer className="card p-1 mt-4" style={{
+                    display: "flex",
+                    // justifyContent: "left",
+                    alignItems: "left",
+                    backgroundColor:"rgb(175, 200, 209)"
+                    }}>
+
                     <span className="pull-right">
 
                     <MDBBtn 
@@ -110,12 +117,13 @@ class GoalsSetGoals extends React.Component{
                     >
                         <i className="fas fa-plus mr-2" ></i>Set Goals</MDBBtn>
                     </span>
+
                     <Modal isOpen={this.state.setGoalModal} toggle={this.setGoalToggle.bind(this)}>    
                     <ModalHeader toggle={this.closeToggle.bind(this)}>Create Goal</ModalHeader>
                     <ModalBody>
 
-                        <FormGroup tag="fieldset">
-                            {/* <legend className="col-form-label col-sm-2">Radio Buttons</legend> */}
+                        {/* <FormGroup tag="fieldset">
+                            <legend className="col-form-label col-sm-2">Radio Buttons</legend>
                             <Row sm={10}>
                             <FormGroup className='p-0 m-0' check>
                                 <Label  className='p-0 m-0' check>
@@ -140,7 +148,7 @@ class GoalsSetGoals extends React.Component{
                                 </Label>
                             </FormGroup>
                             </Row>
-                        </FormGroup>
+                        </FormGroup> */}
                         
                         <FormGroup >
                             <InputGroupAddon addonType="prepend">
@@ -215,10 +223,11 @@ class GoalsSetGoals extends React.Component{
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={this.createGoal.bind(this)}>Set</Button>
-                        <Button color="secondary" onClick={this.closeToggle.bind(this)}>Cancel</Button>
+                        <Button color="danger" onClick={this.closeToggle.bind(this)}>Cancel</Button>
                     </ModalFooter>
                 </Modal> 
-                </div>
+
+                </MDBContainer>
             </section>    
         )
     }

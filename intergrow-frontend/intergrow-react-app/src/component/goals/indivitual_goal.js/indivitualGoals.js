@@ -1,11 +1,10 @@
 import React from 'react';
-import HeaderGoal from './sections/goalsHeader';
-import GoalsView from './sections/goalsView';
-import GoalsSetGoals from './sections/goalsSetGoal';
+import Header from './sections/Header';
 import { Redirect } from 'react-router';
+import IndividualGoalView from './sections/GoalView';
+import CreateIndividualGoal from './sections/CreateIndividualGoal';
 
-
-class goals extends React.Component{    
+class IndividualGoal extends React.Component{    
     constructor(props){
         super(props);
         this.state = {
@@ -28,15 +27,13 @@ class goals extends React.Component{
         }
         return(
             <div className=''>          
-                <HeaderGoal/>   
+                <Header/>
 
-                {/* <GoalsSetGoals/> */}
+                <IndividualGoalView/>
 
-                <GoalsView/>
-
-                <GoalsSetGoals/>
+                <CreateIndividualGoal/>
             </div>
         );
     }
 }
-export default goals;
+export default IndividualGoal;

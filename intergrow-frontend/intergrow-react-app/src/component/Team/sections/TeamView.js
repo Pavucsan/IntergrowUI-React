@@ -3,6 +3,7 @@ import { MDBContainer } from 'mdbreact';
 import React from 'react';
 import { Badge, ToastHeader } from 'reactstrap';
 import { COURSE_API_URL } from '../../../constants/utill';
+import PaginationCust from '../../../constants/Pagination';
 
 class TeamView extends React.Component{
     state = {
@@ -23,7 +24,10 @@ class TeamView extends React.Component{
         },
         members:2,        
         isOpen : false,
-        newTeamToggleModal : false,        
+        newTeamToggleModal : false,
+        
+        currentPage :1,
+        postsPerPage :5,
     }
    
     componentWillMount(){
@@ -66,12 +70,19 @@ class TeamView extends React.Component{
     }
 
     render(){
-        let viewTeam = this.state.teams.map((team) =>{
+
+        const indexOfLastPage = this.state.currentPage * this.state.postsPerPage;
+        const indexOfFirstPage = indexOfLastPage - this.state.postsPerPage;
+        const currentPosts = this.state.teams.slice(indexOfFirstPage, indexOfLastPage); 
+
+        const paginate = pageNumber => this.setState({currentPage:pageNumber});
+
+        let viewTeam = currentPosts.map((team) =>{
             return(                
-                <MDBContainer className=' mb-2' key={team.team_id}>
+                <MDBContainer className=' mb-2 #90caf9 blue lighten-3' key={team.team_id}>
                     <a href={'/team/'+ team.id}>
                     <ToastHeader>   
-                    <Badge color="warning">Edit</Badge> &nbsp;                 
+                    {/* <Badge color="warning">Edit</Badge> &nbsp;                  */}
                     <strong>{team.team_name}</strong>&nbsp;
                     <small>{team.start_date}</small>
                     </ToastHeader>
@@ -81,13 +92,16 @@ class TeamView extends React.Component{
         })
         return(
             <section>
-                <MDBContainer className="card p-4" style={{
+                <MDBContainer className="card p-4 mt-4" style={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundColor:"rgb(175, 200, 209)"
                     }}>
                     {viewTeam}
+                    <PaginationCust  postsPerPage={this.state.postsPerPage} totalPosts={this.state.teams.length} paginate={paginate}/>
+
+                    
                 </MDBContainer>
                 
             </section>  

@@ -4,9 +4,9 @@ class EmployeeHeader extends React.Component{
     render(){
         return(
             
-            <div class="card-body text-white text-center py-1 px-8 my-3 text-uppercase">
+            <div className="card-body text-white text-center py-1 px-8 my-3 text-uppercase">
 
-                <h1 class="mb-4">
+                <h1 className="mb-4">
                     <strong>Intergrow Emloyees</strong>
                 </h1>
                 <p>

@@ -40,8 +40,6 @@ class Viewhelp extends React.Component{
             </div>
         )
     }
-
-
 }
 
 export default Viewhelp;

@@ -8,18 +8,18 @@ const PaginationCust = ({postsPerPage, totalPosts, paginate}) =>{
         pageNumber.push(i);   
     }
     return(
-            <Pagination aria-label="Page navigation example">
-                <PaginationItem>
+            <Pagination aria-label="Page navigation example mb-0" >
+                <PaginationItem  className='card mb-0'>
                     <PaginationLink first onClick={() => paginate(1)} />
-                </PaginationItem>
+                </PaginationItem >
                     {pageNumber.map(number => (
-                        <PaginationItem key={number} >
+                        <PaginationItem key={number}  className='card ml-1 mr-1'>
                             <PaginationLink onClick={() => paginate(number)} >
                                 {number} 
                             </PaginationLink>
                         </PaginationItem>
                     ))}
-                <PaginationItem>
+                <PaginationItem  className='card'>
                     <PaginationLink last onClick={() =>paginate(pageNumber.length)} />
                 </PaginationItem>
             </Pagination>

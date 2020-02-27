@@ -38,10 +38,15 @@ const EmpTab = () =>{
             {/* <EmpPosts posts={currentPosts} loading={loading}/> */}
 
             <section>
-                <MDBContainer className="card w-100">
-                    <h3 className="card-header text-center font-weight-bold text-uppercase py-4">Employees</h3>
-                    <div className="card-body">
-                        <div id="table" className="table-editable">                           
+                <MDBContainer className="card p-4 mt-4" style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    // backgroundColor:"rgb(175, 200, 209)"
+                    }}>
+                    {/* <h3 className="card-header text-center font-weight-bold text-uppercase py-4">Employees</h3> */}
+                    {/* <div className="card-body"> */}
+                        {/* <div id="table" className="table-editable">                            */}
                             <table className="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
@@ -58,12 +63,13 @@ const EmpTab = () =>{
                             </table>
                             <EmpPagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/>
 
-                        </div>
-                    </div>
+                        {/* </div> */}
+                    {/* </div> */}
                 </MDBContainer>                     
             </section> 
 
             {/* Add table for employee */}
+            
 
         </div>
     )

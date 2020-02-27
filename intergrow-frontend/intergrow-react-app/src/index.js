@@ -20,6 +20,7 @@ import ViewTeam from './component/Team/team';
 import './css/index.css';
 import GoalProgress from "./component/goals/goal_progress_page";
 import TeamDetails from "./component/Team/teamDetails";
+import IndividualGoal from "./component/goals/indivitual_goal.js/indivitualGoals";
 
 
 const routing = (
@@ -37,6 +38,7 @@ const routing = (
                 <Route path = '/register' component = {RegisterUser}/>
                 <Route path = '/goal/:id' component = {GoalProgress}/>
                 <Route path = '/team/:id' component = {TeamDetails}/>
+                <Route path = '/individual_goal/' component = {IndividualGoal}/>
                 <Route component = {NotFoundPage}/>
             </Switch>
         </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Nav, PaginationItem, PaginationLink } from 'reactstrap';
+import { Pagination, } from 'react-bootstrap';
  
 const EmpPagination = ({postsPerPage, totalPosts, paginate}) =>{
     const pageNumber = [];
@@ -6,17 +8,21 @@ const EmpPagination = ({postsPerPage, totalPosts, paginate}) =>{
         pageNumber.push(i);   
     }
     return(
-        <nev>
-            <ul className='pagination'>
-                {pageNumber.map(number => (
-                    <li key={number} className='page-item'>
-                        <a onClick={() => paginate(number)} className='page-link'>
-                            {number} 
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </nev>
+        <Pagination aria-label="Page navigation example mb-0" >
+                <PaginationItem  className='card mb-0'>
+                    <PaginationLink first onClick={() => paginate(1)} />
+                </PaginationItem >
+                    {pageNumber.map(number => (
+                        <PaginationItem key={number}  className='card ml-1 mr-1'>
+                            <PaginationLink onClick={() => paginate(number)} >
+                                {number} 
+                            </PaginationLink>
+                        </PaginationItem>
+                    ))}
+                <PaginationItem  className='card'>
+                    <PaginationLink last onClick={() =>paginate(pageNumber.length)} />
+                </PaginationItem>
+            </Pagination>
     )
 }
 export default EmpPagination;

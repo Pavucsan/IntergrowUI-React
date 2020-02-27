@@ -25,14 +25,14 @@ class TopAskers extends React.Component{
     render(){
         return(
 
-            <div class="card my-5 py-5 px-md-5 z-depth-1">
+            <div class="card my-0 py-5 px-md-5 z-depth-1">
                 <div className="card-header font-weight-bold">
-                <span><h2>Top Best Askers</h2></span>
+                <span><h2>Top Mentee Request</h2></span>
                 </div>
                 <section class="text-center text-lg-left dark-grey-text">            
                     {/* <div class="text-center font-weight-bold"><span>4</span> comments</div> */}
                     {
-                        this.state.employees.map((emp) => {
+                        this.state.employees.slice(0, 3).map((emp) => {
                             return(
                             <div class="media d-block d-md-flex mt-3" key={emp.id}>
                                 <img class="card-img-64 rounded z-depth-1 d-flex mx-auto mb-2"

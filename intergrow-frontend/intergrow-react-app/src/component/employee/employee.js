@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { MDBBtn, MDBContainer } from 'mdbreact';
 import React from "react";
-import { COURSE_API_URL } from '../../constants/utill';
+import { COURSE_API_URL, TITLE_COLOR } from '../../constants/utill';
 import EmployeeCardView from './sections/employeeCardView';
 import { Redirect } from 'react-router';
 
@@ -75,7 +75,7 @@ class EmployeeView extends React.Component {
             
 
             <div className="">
-                <section class="card aqua-gradient wow fadeIn  text-uppercase">
+                <section className={"card wow fadeIn text-uppercase "+ TITLE_COLOR}>
                 {/* <!-- Content --> */}
                 <div class="card-body text-white text-center py-1 px-8 my-3">
                     <h1 class="mb-4">

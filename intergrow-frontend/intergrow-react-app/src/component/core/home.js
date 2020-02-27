@@ -37,7 +37,7 @@ class Home extends React.Component {
           responses : [],     
           teams : [], 
           goals:[],
-          redirect:false
+          redirect:false,
       }
 
     }

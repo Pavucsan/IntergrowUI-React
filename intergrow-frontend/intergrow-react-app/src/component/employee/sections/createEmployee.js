@@ -1,8 +1,8 @@
-import React from 'react';
+import Axios from 'axios';
 import { MDBBtn } from 'mdbreact';
+import React from 'react';
 import { Button, FormGroup, Input, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { COURSE_API_URL, COURSE_AUTH_USERS_URL } from '../../../constants/utill';
-import Axios from 'axios';
 
 class CreateEmployee extends React.Component{
     constructor(props){
@@ -10,6 +10,7 @@ class CreateEmployee extends React.Component{
 
         this.state = {
             employees: [], 
+            users:[],
             groups: [],         
             newEmployeeData:{
                 employee_id: '',
@@ -18,12 +19,58 @@ class CreateEmployee extends React.Component{
                 last_name:'',
                 email:'',
                 phone_number:'',
-                address:''
+                address:'',
+                user:[]
             },
             credencials: {username: '', password: ''},
             newEmployeeModal:false,    
-            errorMsg:''
+            errorMsg:'',
+            loading:true,
         }
+        
+    }
+    
+    inputChange = e =>{
+        const cred = this.state.credencials;
+        // target will set at onChange and find by name 
+        cred[e.target.name] = e.target.value;
+        this.setState({
+          credencials:cred,
+        })
+      }
+    // Initial stage
+    componentWillMount()
+    {
+        this._refreshEmployee.bind(this);
+        this.getGroups();            
+        this.getUsers();
+    }
+    getGroups(){
+        Axios.get(COURSE_API_URL + 'groups/').then((response) =>
+        {
+            this.setState({
+                groups: response.data
+            });
+            console.log(this.state.gropus);
+        });
+    }
+    _refreshEmployee()
+    {
+        Axios.get(COURSE_API_URL + 'employees/').then((response) =>
+        {
+            this.setState({
+                employees: response.data
+            });
+            // console.log(this.state.employees);
+        });
+        
+    }
+    // End
+    // add new employee
+    toggleNewEmployee(){
+        this.setState({
+            newEmployeeModal:true
+        })
     }
     register = () =>{
         // use BE api to login    
@@ -48,53 +95,34 @@ class CreateEmployee extends React.Component{
           }
         })
     }
-    inputChange = e =>{
-        const cred = this.state.credencials;
-        // target will set at onChange and find by name 
-        cred[e.target.name] = e.target.value;
-        this.setState({
-          credencials:cred,
-        })
-      }
-    // Initial stage
-    componentWillMount()
-    {
-        this._refreshEmployee.bind(this);
-        this.getGroups();
-    }
-    getGroups(){
-        Axios.get(COURSE_API_URL + 'groups/').then((response) =>
-        {
-            this.setState({
-                groups: response.data
-            });
-            console.log(this.state.gropus);
-        });
-    }
-    _refreshEmployee()
-    {
-        Axios.get(COURSE_API_URL + 'employees/').then((response) =>
-        {
-            this.setState({
-                employees: response.data
-            });
-            // console.log(this.state.employees);
-        });
-    }
-    // End
-    // add new employee
-    toggleNewEmployee(){
-        this.setState({
-            newEmployeeModal:true
-        })
+    async getUsers(){
+
+        this.setState({loading:true});
+        const res = await Axios.get(COURSE_API_URL + 'users');
+        this.setState({users:res.data});
+        this.setState({loading:false});
+        
     }
     addEmployee = (e) =>
     {
-        // console.log(e.target.value);
-        // if(e.target.value){
-            // this.setState.newEmployeeData.full_name = this.state.newEmployeeData.first_name + " " + this.state.newEmployeeData.last_name;
-            
-            Axios.post(COURSE_API_URL + 'employees/', this.state.newEmployeeData).then((response)=>{
+        fetch(COURSE_AUTH_USERS_URL, {
+            method : 'POST',
+            headers : {'Content-Type' : 'application/json'},
+            body : JSON.stringify(this.state.credencials)
+            })
+            // 1st get the data as json
+            .then(data => data.json())
+            // use json data 'use token as authendication'
+            .then(data => {
+                Axios.get(COURSE_API_URL + `users/${this.state.credencials.username}`).then((response) => {
+                    // console.log(response.data);
+                    let {newEmployeeData} = this.state;
+                    newEmployeeData.user = response.data.id;
+                    this.setState({
+                        newEmployeeData,
+                    });            
+                console.log(this.state.newEmployeeData);
+                Axios.post(COURSE_API_URL + 'employees/', this.state.newEmployeeData).then((response)=>{
 
                 console.log(response.data);
                 let {employees} = this.state;
@@ -110,17 +138,24 @@ class CreateEmployee extends React.Component{
                     last_name:'',
                     email:'',
                     phone_number:'',
-                    address:''
+                    address:'',
+                    user:[]
                 });
+            });                    
             });
-            this.register();
-        }
-        // else{
-        //     this.setState({})
-        // }
-
-    // }    
-    // Add employee finished
+            if(data.token == null){        
+                console.error("Register faild!");  
+                // this.closeToggle();
+            }
+            else{
+                console.log("Registration success");
+                console.log(data.token);
+                // this.closeToggle();********************************************************
+            }
+            })              
+            //   window.location.reload();
+    }
+        
 
     closeToggle(){
     this.setState({
@@ -135,8 +170,8 @@ class CreateEmployee extends React.Component{
             <div className="card mb-4 mt-2 pt-2 pb-2 wow fadeIn text-center">
 
                 <span className="pull-right">
-                    <MDBBtn href="/employee" className={'btn btn-info'} style = {{'background-color':'blue'}}><i class="fas fa-eye mr-2" ></i>Employee View</MDBBtn>
-                    <MDBBtn onClick={this.toggleNewEmployee.bind(this)} className={'btn btn-info'}><i class="fas fa-plus mr-2"></i>Create Profile</MDBBtn>
+                    <MDBBtn href="/employee" className={'btn btn-info'} style = {{'backgroundColor':'blue'}}><i className="fas fa-eye mr-2" ></i>Employee View</MDBBtn>
+                    <MDBBtn onClick={this.toggleNewEmployee.bind(this)} className={'btn btn-info'}><i className="fas fa-plus mr-2"></i>Create Profile</MDBBtn>
                     <Modal isOpen={this.state.newEmployeeModal} toggle={this.toggleNewEmployee.bind(this)}>                                            
                         <ModalHeader toggle={this.closeToggle.bind(this)}>Create Employee Profile</ModalHeader>
                         <div className='row mr-2 ml-2 '>
@@ -273,7 +308,7 @@ class CreateEmployee extends React.Component{
                                        
                                                 this.state.groups.map((gp) =>{
                                                     return(
-                                                        <option value={gp.name}>{gp.name}</option>
+                                                        <option value={gp.name} key={gp.id}>{gp.name}</option>
                                                     )
                                                 })
                                                 
@@ -286,7 +321,7 @@ class CreateEmployee extends React.Component{
                         </div>
                         <ModalFooter>
                             <Button color="primary" onClick={this.addEmployee.bind(this)}>Register</Button>
-                            <Button color="secondary" onClick={this.closeToggle.bind(this)}>Cancel</Button>
+                            <Button color="danger" onClick={this.closeToggle.bind(this)}>Cancel</Button>
                         </ModalFooter>
                 </Modal> 
                 </span>

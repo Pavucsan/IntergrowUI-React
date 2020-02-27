@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
+import { TITLE_COLOR } from '../../../constants/utill';
 
 const HelpHeader = () => {
     return(
-        <section class="card aqua-gradient wow fadeIn  text-uppercase">
+        <section className={"card wow fadeIn text-uppercase "+ TITLE_COLOR}>
             {/* <!-- Content --> */}
             <div class="card-body text-white text-center py-1 px-8 my-3">
 

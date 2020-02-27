@@ -49,17 +49,19 @@ class Login extends React.Component{
           })     
         }
         else{
-          console.log("Login success");
-          console.log(data.token);
-
+          // console.log("Login success");
+          // console.log(data);
+          window.location.reload();
 
           sessionStorage.setItem('userData',data);
+          sessionStorage.setItem('username',this.state.credencials.username);
           this.setState({
             redirect:true,
             isLoggedIn:true,
           })
+          
 
-          console.log('Home Page');
+          console.log(sessionStorage.setItem('userData',data));
           this.setState({
             // newLoginModal:false,
             credencials: {username: '', password: ''},

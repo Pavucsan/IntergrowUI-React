@@ -124,8 +124,14 @@ class CreateTeam extends React.Component{
         
         return(
             <section>
-                <div className="card mb-2 mt-2 pt-2 pb-2 text-center wow fadeIn">
-                    
+                {/* <div className=" mb-2 mt-2 pt-2 pb-2  wow fadeIn"> */}
+                <MDBContainer className="card p-1 mt-4" style={{
+                    display: "flex",
+                    // justifyContent: "left",
+                    alignItems: "left",
+                    backgroundColor:"rgb(175, 200, 209)"
+                    }}>
+
                     <span className="pull-right">
                     <MDBBtn 
                     color = 'primary'                        
@@ -209,7 +215,7 @@ class CreateTeam extends React.Component{
                     <Button color="danger" rounded='true'  onClick = {this.closeTeamToggle.bind(this)} >Cancel</Button>
                     </ModalFooter>
                 </Modal>
-                </div>
+                </MDBContainer>
             </section>
         )
     }
