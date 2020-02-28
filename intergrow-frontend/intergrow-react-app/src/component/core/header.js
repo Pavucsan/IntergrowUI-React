@@ -64,7 +64,7 @@ class header extends React.Component{
     }
     
     return (
-      <MDBNavbar color="unique-color-dark" dark expand="md" className="fixed-top">
+      <MDBNavbar color="unique-color-dark" dark expand="md" className="fixed-top zoom">
         <MDBNavbarBrand>
           <strong className="white-text"><a className="white-text h4-responsive font-weight-bold" href="/login"> Intergrow</a></strong>
         </MDBNavbarBrand>
@@ -88,7 +88,7 @@ class header extends React.Component{
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
-            <MDBNavItem className="pt-2 pl-3" nav caret >
+            <MDBNavItem className="pt-2 pl-3 " nav caret >
               <a className="white-text" href="/help">Help</a>
             </MDBNavItem>
             <MDBNavItem className="pl-3">
@@ -98,11 +98,22 @@ class header extends React.Component{
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default white-text">
                   <MDBDropdownItem href="/employeelist/"><MDBIcon icon="eye" className="pr-2"/>Empoyee</MDBDropdownItem>
-                  <MDBDropdownItem href="/team/"><MDBIcon icon="eye" className="pr-2"/>Team</MDBDropdownItem>
+                  <MDBDropdownItem href="/teams/"><MDBIcon icon="eye" className="pr-2"/>Team</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
-          </MDBNavbarNav>
+            <MDBNavItem className="pl-3">
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret >
+                 Allocations
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default white-text">
+                  <MDBDropdownItem href="/allocation/employees"><MDBIcon icon="compress" className="pr-2"/>Employee Allocation</MDBDropdownItem>
+                  {/* <MDBDropdownItem href="/goals/"><MDBIcon icon="users" className="pr-2"/>Team Goal</MDBDropdownItem> */}
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavItem>
+          </MDBNavbarNav>          
           <MDBNavbarNav right>
             <MDBNavItem>
               <MDBDropdown>

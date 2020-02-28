@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './sections/Header';
+import Header from './sections/HeaderGoalIndividual';
 import { Redirect } from 'react-router';
 import IndividualGoalView from './sections/GoalView';
 import CreateIndividualGoal from './sections/CreateIndividualGoal';

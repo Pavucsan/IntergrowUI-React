@@ -1,11 +1,9 @@
 import Axios from 'axios';
 import { MDBContainer } from 'mdbreact';
 import React from 'react';
-import { Badge, Jumbotron, Label, Progress, ToastHeader } from 'reactstrap';
-import { COURSE_API_URL } from '../../../constants/utill';
-import GoalsSetGoals from './goalsSetGoal';
-import { Pagination } from 'react-bootstrap';
+import { ToastHeader } from 'reactstrap';
 import PaginationCust from '../../../constants/Pagination';
+import { COURSE_API_URL } from '../../../constants/utill';
 
 
 

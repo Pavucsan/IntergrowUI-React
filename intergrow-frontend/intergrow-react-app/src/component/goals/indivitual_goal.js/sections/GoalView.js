@@ -22,10 +22,20 @@ class IndividualGoalView extends React.Component{
         this.getIndividualGoals();
     }
     getIndividualGoals(){
-        Axios.get(COURSE_API_URL + 'individual_goal/').then((response) =>{
-            console.log(response.data);
-            this.setState({
-                individual_goals:response.data,
+        console.log("individual "+sessionStorage.getItem('username'));
+        Axios.get(COURSE_API_URL + 'users/' + sessionStorage.getItem('username')).then((response) => {
+            console.log(response.data.id);   
+
+            // find employee by userID
+            Axios.get(COURSE_API_URL + 'employee/user/' + response.data.id).then((emp) => {
+                console.log(emp.data);
+        
+                Axios.get(COURSE_API_URL + 'individual_goal/employee/' + emp.data.id).then((response) =>{
+                    console.log(response.data);
+                    this.setState({
+                        individual_goals:response.data,
+                    })
+                })
             })
         })
     }

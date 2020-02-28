@@ -1,9 +1,9 @@
 import React from 'react';
-import TeamDetailHeader from './TeamDetail/header';
 import { Redirect } from 'react-router';
-import TeamDetailView from './TeamDetail/teamDetailView';
+import Header from './section/HeaderEmpAllocation';
+import AllocationTeamView from './section/AllocationTeamVIew';
 
-class TeamDetails extends React.Component{
+class AllocateToTeam extends React.Component{    
     constructor(props){
         super(props);
         this.state = {
@@ -13,27 +13,25 @@ class TeamDetails extends React.Component{
     componentWillMount()
     {
         if(sessionStorage.getItem('userData')){
-            console.log('team goals');
+            console.log('call user feed');
           }
           else{
             this.setState({redirect:true})
           }
     }
+
     render(){
         if(this.state.redirect){
             return(<Redirect to={'/login'}/>)
         }
         return(
-            
-            <div>
-                <TeamDetailHeader/>
-                {/* idx={this.props.match.params.id} */}
+            <div className=''>    
+                
+                <Header/>
 
-                <TeamDetailView idx={this.props.match.params.id}/>
-
-
+                <AllocationTeamView idx={this.props.match.params.id}/>
             </div>
         );
     }
 }
-export default TeamDetails;
+export default AllocateToTeam;

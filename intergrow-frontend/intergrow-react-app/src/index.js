@@ -21,6 +21,9 @@ import './css/index.css';
 import GoalProgress from "./component/goals/goal_progress_page";
 import TeamDetails from "./component/Team/teamDetails";
 import IndividualGoal from "./component/goals/indivitual_goal.js/indivitualGoals";
+import EmployeeAllocation from "./component/Allocation/EmployeeAllocation/EmployeeAllocation";
+import TeamDetailHeader from "./component/Team/TeamDetail/header";
+import AllocateToTeam from "./component/Allocation/EmployeeAllocation/AllocateToTeam";
 
 
 const routing = (
@@ -34,11 +37,14 @@ const routing = (
                 <Route path ='/employeelist' component = {EmployeeList}/>
                 <Route path ='/goals' component = {goals}/>
                 <Route path = '/help' component = {Viewhelp}/>
-                <Route path = '/team' component = {ViewTeam}/>
                 <Route path = '/register' component = {RegisterUser}/>
                 <Route path = '/goal/:id' component = {GoalProgress}/>
+                <Route path = '/teams' component = {ViewTeam}/>
                 <Route path = '/team/:id' component = {TeamDetails}/>
                 <Route path = '/individual_goal/' component = {IndividualGoal}/>
+                <Route path = '/allocation/employees' component = {EmployeeAllocation}/>
+                <Route path = '/allocation/employee/:id' component = {AllocateToTeam}/>
+                
                 <Route component = {NotFoundPage}/>
             </Switch>
         </div>

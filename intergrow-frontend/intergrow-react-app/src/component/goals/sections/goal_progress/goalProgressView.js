@@ -149,7 +149,7 @@ class GoalProgressView extends React.Component{
                             this.state.goal_progress.map((gp) => {
                                 return(
                                 <div className='pb-3'>
-                                    <h6 className="mt-0 font-weight-bold"><MDBIcon icon='check'className='pl-2'/> {gp.progress_description}<span className="small text-muted float-right pr-2"><i className="far fa-clock pr-1"></i>{gp.progress_date}<Button color='warning' className="btn btn-warning btn-sm mb-0 mr-0">Edit</Button></span></h6>
+                                    <h6 className="mt-0 font-weight-bold"><MDBIcon icon='check' className='pl-2'/> {gp.progress_description}<span className="small text-muted float-right pr-2"><i className="far fa-clock pr-1"></i>{gp.progress_date}<Button color='warning' className="btn btn-warning btn-sm mb-0 mr-0">Edit</Button></span></h6>
                                     {/* <small className="font-italic">Theme-thumbnail-image.jpg</small> */}
                                     {/* <div className="text-right"> */}
                                     {/* <button className="btn btn-warning btn-sm mb-0 mr-0">Edit</button> */}
