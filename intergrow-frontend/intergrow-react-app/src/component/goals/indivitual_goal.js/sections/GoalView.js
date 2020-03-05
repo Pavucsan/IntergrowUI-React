@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { MDBContainer } from 'mdbreact';
 import React from 'react';
-import { Badge, Jumbotron, Label, Progress, ToastHeader } from 'reactstrap';
+import { Badge, Jumbotron, Label, Progress, ToastHeader, Alert } from 'reactstrap';
 import { COURSE_API_URL } from '../../../../constants/utill';
 import PaginationCust from '../../../../constants/Pagination';
 
@@ -24,14 +24,14 @@ class IndividualGoalView extends React.Component{
     getIndividualGoals(){
         console.log("individual "+sessionStorage.getItem('username'));
         Axios.get(COURSE_API_URL + 'users/' + sessionStorage.getItem('username')).then((response) => {
-            console.log(response.data.id);   
+            // console.log(response.data.id);   
 
             // find employee by userID
             Axios.get(COURSE_API_URL + 'employee/user/' + response.data.id).then((emp) => {
-                console.log(emp.data);
+                // console.log(emp.data);
         
                 Axios.get(COURSE_API_URL + 'individual_goal/employee/' + emp.data.id).then((response) =>{
-                    console.log(response.data);
+                    // console.log(response.data);
                     this.setState({
                         individual_goals:response.data,
                     })
@@ -62,7 +62,7 @@ class IndividualGoalView extends React.Component{
             return(
 
                 <MDBContainer className='card mb-2  #90caf9 blue lighten-3' key={goal.id}>
-                    <a href={'/individual_goal/' + goal.id} >   
+                    <a href={'/individual_goals/progress/' + goal.id} >   
                     <ToastHeader>
                     {/* <ChildComponent tmId={1}/>    */}
                     &nbsp; {goal.goal_discription}&nbsp; 
@@ -89,7 +89,13 @@ class IndividualGoalView extends React.Component{
                             {/* <Jumbotron className='mb-1 pb-4 pt-5'>   */}
                             {viewGoals}
                             {/* </Jumbotron>                              */}
-                            <PaginationCust postsPerPage={this.state.postsPerPage} totalPosts={this.state.individual_goals.length} paginate={paginate}/>
+
+                    {
+                        currentPosts.length > 0 ? <PaginationCust postsPerPage={this.state.postsPerPage} totalPosts={this.state.individual_goals.length} paginate={paginate}/>
+                        : <Alert color="danger">
+                                Nothing Goal available!
+                            </Alert>
+                    }
                                              
                         {/* </MDBContainer> */}
 

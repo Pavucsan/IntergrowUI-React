@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
-import { COURSE_API_URL } from '../../../../constants/utill';
+import { COURSE_API_URL, BG_COLOR } from '../../../../constants/utill';
 import EmpPosts from './empPost';
 import EmpPagination from './empPagination';
 import { MDBContainer } from 'mdbreact';
@@ -46,8 +46,8 @@ const EmpTab = () =>{
                     }}>
                     {/* <h3 className="card-header text-center font-weight-bold text-uppercase py-4">Employees</h3> */}
                     {/* <div className="card-body"> */}
-                        {/* <div id="table" className="table-editable">                            */}
-                            <table className="table table-bordered table-responsive-md table-striped text-center">
+                        <div id="table" className="table-editable table-responsive">                           
+                            <table className="table table-bordered table-striped text-center">
                                 <thead>
                                     <tr>
                                         <th className="text-center">Employee Id</th>
@@ -61,11 +61,20 @@ const EmpTab = () =>{
 
                                 <EmpPosts posts={currentPosts} loading={loading}/>
                             </table>
-                            <EmpPagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/>
+                            
 
-                        {/* </div> */}
+                        </div>
+                       
                     {/* </div> */}
-                </MDBContainer>                     
+                </MDBContainer> 
+                <div className='mt-2 pt-2' color={BG_COLOR} style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    // backgroundColor:"rgb(175, 200, 209)"
+                    }}>
+                        <EmpPagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/>
+                        </div>                    
             </section> 
 
             {/* Add table for employee */}

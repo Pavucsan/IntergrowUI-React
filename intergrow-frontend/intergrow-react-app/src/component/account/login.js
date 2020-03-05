@@ -1,7 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import { Button, FormGroup, Input, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import { COURSE_AUTH_URL } from '../../constants/utill';
+import { COURSE_AUTH_URL, TITLE_COLOR } from '../../constants/utill';
 import { Redirect } from 'react-router';
 import Home from '../core/home';
 import { MDBContainer } from 'mdbreact';
@@ -106,39 +106,41 @@ class Login extends React.Component{
       return(<Redirect to={'home/'}/>)
     }
     return (
-      <div className="pt-5">
+      <div className="py-5">
         {/* <Button onClick={this.loginToggle.bind(this)}>Login</Button> */}
         {/* <Modal isOpen={this.state.newLoginModal} toggle={this.loginToggle.bind(this)}> */}
         {/* <Modal isOpen='true' toggle={this.loginToggle.bind(this)}> */}
-        <MDBContainer className='card align-items-center col-xl-4 col-md-6' >
-          <ModalHeader onClick = {this.loginToggle.bind(this)}>Login User</ModalHeader>
+        <MDBContainer className={'card align-items-center col-xl-4 col-md-6  z-depth-3 text-white-50'+ TITLE_COLOR} >
+          <ModalHeader onClick = {this.loginToggle.bind(this)} className='text-white text-uppercase'><strong>Login</strong></ModalHeader>
             <ModalBody>
             <FormGroup>
                 <InputGroupAddon addonType="prepend">
-                    <InputGroupText><i className="fas fa-id-card-alt mr-2" ></i></InputGroupText>
+                    <InputGroupText><i className="fas fa-user mr-2" ></i>
                     <Input placeholder="User Name"
                     name='username'
                      value={this.state.credencials.username}
                      onChange={this.inputChange}
-                    />
+                    /></InputGroupText>
                 </InputGroupAddon>
             </FormGroup>   
             <FormGroup>
                 <InputGroupAddon addonType="prepend">
-                    <InputGroupText><i className="fas fa-users mr-2" ></i></InputGroupText>
+                    <InputGroupText><i className="fas fa-key mr-2" ></i>
                     <Input type='password' placeholder="Password" 
                     name = 'password'
                     value={this.state.credencials.password}
                     onChange={this.inputChange}
-                    />
+                    /></InputGroupText>
                 </InputGroupAddon>
-            </FormGroup>   
+            </FormGroup> 
+            <small>
+          <a className='text-left pb-2 zoom text-white-50'>forget password</a>
+          </small>  
           </ModalBody>
-          <a className='text-left  pb-2 text-primary'>Forget password</a>
-          <ModalFooter>
-            <Button color="primary" rounded='true' onClick = {this.login}>Login</Button>
+          {/* <ModalFooter> */}
+            <Button color="primary" rounded='true' onClick = {this.login} className='mb-2'>Login</Button>
             {/* <Button color="danger" rounded='true'  onClick = {this.closeToggle.bind(this)} >Cancel</Button> */}
-          </ModalFooter>
+          {/* </ModalFooter> */}
         {/* </Modal>    */}
         </MDBContainer>
       </div>

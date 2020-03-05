@@ -121,7 +121,11 @@ class header extends React.Component{
                  <strong className='text-uppercase'>{this.state.username} {this.props.userLogin}</strong><MDBIcon icon="user" className="pl-2"/>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="/register">Register</MDBDropdownItem>
+                  <MDBDropdownItem><MDBIcon icon="user" className="pr-2"/>
+                  <a href='/profile'>
+                    Profile
+                  </a>
+                  </MDBDropdownItem>
                   {button}                  
                 </MDBDropdownMenu>
               </MDBDropdown>

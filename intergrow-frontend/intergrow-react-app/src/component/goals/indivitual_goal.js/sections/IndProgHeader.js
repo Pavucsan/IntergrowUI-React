@@ -1,30 +1,37 @@
 import React from 'react';
 import { TITLE_COLOR } from '../../../../constants/utill';
 
-class HeaderGoalProgress extends React.Component{
+class IndProgHeader extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            
+        }
+    }
+
     render(){
         return(
             <section className={"card wow fadeIn text-uppercase "+ TITLE_COLOR}>
                 {/* <titleTeam/> */}
-                <div className="card-body text-white text-center py-1 px-8 my-3">
+                <div className="card-body text-white text-center py-3 px-8 my-0">
                     <h1 className="mb-4">
-                        <strong>Goal Progress</strong>
+                        <strong>{this.props.title}</strong>
                     </h1>
                     <p>
                         <strong>Metrics of a Goal</strong>
                     </p>
-                </div> 
+                </div>  
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb indigo lighten-4">
                     <li class="breadcrumb-item"><a class="black-text" href="/home">Dashboard</a><i class="fas fa-caret-right mx-2"
                         aria-hidden="true"></i></li>
-                    <li class="breadcrumb-item"><a class="black-text" href="/goals">Goal</a><i class="fas fa-caret-right mx-2"
+                    <li class="breadcrumb-item"><a class="black-text" href="/individual_goal/">Individual Goal</a><i class="fas fa-caret-right mx-2"
                         aria-hidden="true"></i></li>
-                    <li class="breadcrumb-item active">Goal Progress</li>
+                    <li class="breadcrumb-item active">Individual Goal Progrss</li>
                     </ol>
-                </nav> 
+                </nav>
             </section>
         )
     }
 }
-export default HeaderGoalProgress;
+export default IndProgHeader;

@@ -1,24 +1,19 @@
-import axios from 'axios';
-import { MDBBtn, MDBCard, MDBContainer, MDBIcon } from 'mdbreact';
+import { default as axios, default as Axios } from 'axios';
+import { MDBContainer } from 'mdbreact';
 import React from 'react';
-import EllipsisText from 'react-ellipsis-text';
+import '../../css/home.css';
 //response for carousel **** 
 import "react-multi-carousel/lib/styles.css";
-import { Link, Redirect } from "react-router-dom";
-import { Label, Progress } from 'reactstrap';
-import '../../css/home.css';
-
-// import '../../css/index.css';
-import Axios from 'axios';
+import { Redirect } from "react-router-dom";
 // api
 import { COURSE_API_URL } from '../../constants/utill';
-
-import AdminGoalsCard from './section/AdminGoalsCard';
-import AdminTitleCard from './section/AdminTitleCard';
-import AdminTeamCard from './section/AdminTeamCard';
 import AdminEmmployeeCard from './section/AdminEmployeeCard';
+import AdminGoalsCard from './section/AdminGoalsCard';
 import AdminOverallProgressCard from './section/AdminOverallProgressCard';
+import AdminTitleCard from './section/AdminTitleCard';
 import TeamPost from './section/teamActivity.js/teamPost';
+
+
 
 
 

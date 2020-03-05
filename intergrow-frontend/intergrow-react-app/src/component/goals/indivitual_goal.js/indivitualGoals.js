@@ -27,7 +27,7 @@ class IndividualGoal extends React.Component{
         }
         return(
             <div className=''>          
-                <Header/>
+                <Header title="Individual Goal"/>
 
                 <IndividualGoalView/>
 

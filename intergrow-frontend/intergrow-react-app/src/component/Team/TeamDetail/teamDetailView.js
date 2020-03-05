@@ -14,6 +14,7 @@ class TeamDetailView extends React.Component{
             leader:[],
 
             members:[],
+            team_goals:[],
 
             team_detail:[],
 
@@ -31,25 +32,18 @@ class TeamDetailView extends React.Component{
         }
         this.getTeam();
         this.getMember();
+        this.getTeamGoals();
         // this.getTeamDetail(); 
     }
-    
-    // getTeamDetail(){
-    //     Axios.get(COURSE_API_URL + 'team/' + this.props.idx).then((response)=>{
-    //         console.log(response.data);
-    //         this.setState({
-    //             team:response.data
-    //         })
-    //     })
-    // }
+
     getTeam(){
         Axios.get(COURSE_API_URL + 'team/' + this.props.idx).then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             this.setState({
                 team:response.data,
             })
             Axios.get(COURSE_API_URL + `employee/${response.data.leader}`).then((lead) =>{
-                console.log(lead.data.first_name)
+                // console.log(lead.data.first_name)
                 this.setState({
                     leader:lead.data,
                 })
@@ -58,16 +52,20 @@ class TeamDetailView extends React.Component{
     }
     getMember(){
         Axios.get(COURSE_API_URL + 'team_employee_allocation/team/' + this.props.idx).then((response) =>{
-            console.log(response.data);
+            // console.log(response.data);
             this.setState({
                 members:response.data,
             })
         })
     }
-    // findTeamGoal(){
-
-    // }
-   
+    getTeamGoals(){
+        Axios.get(COURSE_API_URL + 'team_goals/team/' + this.props.idx).then((response) =>{
+            // console.log(response.data);
+            this.setState({
+                team_goals:response.data,
+            })
+        })
+    }   
     render(){
         if(this.state.redirect){
             return(<Redirect to={'/login'}/>)
@@ -85,7 +83,7 @@ class TeamDetailView extends React.Component{
                             <i className="fas fa-trophy fa-3x orange z-depth-1 p-4 rounded-left text-white"></i>
                             <div className="media-body">
                             <p className="text-uppercase mt-2 mb-1 ml-3"><small>Team Goal</small></p>
-                            <p className="font-weight-bold mb-1 ml-3">23 000$</p>
+                            <p className="font-weight-bold mb-1 ml-3">{this.state.team_goals.length}</p>
                             </div>
                         </div>
                     </div>
@@ -124,7 +122,7 @@ class TeamDetailView extends React.Component{
                                 {/* <img className="avatar rounded-circle card-img-64 z-depth-1 d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg" alt="Generic placeholder image"/> */}
                                 <div className="media-body">
                                     <h6 className="mt-0 pb-3 font-weight-bold text-uppercase"><i className="fas fa-users pr-2"></i>
-                                        {this.state.team.team_name}
+                                        {this.state.team.team_name} - {this.state.team.team_id}
                                         <span className="small text-muted float-right pr-2">
                                         <i className="far fa-clock pr-1"></i>{this.state.team.start_date}
                                         </span>

@@ -15,6 +15,15 @@ class TeamDetailHeader extends React.Component{
                     </p>
                 </div>  
                 {/* <TeamSubNav/> */}
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb indigo lighten-4">
+                    <li class="breadcrumb-item"><a class="black-text" href="/home">Dashboard</a><i class="fas fa-caret-right mx-2"
+                        aria-hidden="true"></i></li>
+                    <li class="breadcrumb-item"><a class="black-text" href="/teams">Teams</a><i class="fas fa-caret-right mx-2"
+                        aria-hidden="true"></i></li>
+                    <li class="breadcrumb-item active">Team Detail</li>
+                    </ol>
+                </nav> 
             </section>
         )
     }

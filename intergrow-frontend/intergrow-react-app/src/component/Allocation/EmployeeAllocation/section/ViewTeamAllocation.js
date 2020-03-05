@@ -95,20 +95,6 @@ class CreateEmployeeAllocation extends React.Component{
         
         return(
             <section>
-                {/* <MDBContainer style={{
-                    display: "flex",
-                    alignItems: "right"
-                    }}>
-                    <div class="md-form active-purple active-purple-2 mb-3"  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "right",
-                    backgroundColor:"white",
-                    }}>
-                      <Input class="form-control" type="text" placeholder="Search" id="anythingSearch" aria-label="Search"/>
-                    </div>
-                </MDBContainer>
-                 */}
                 <MDBContainer className="card p-4 mt-4" style={{
                     display: "flex",
                     justifyContent: "center",

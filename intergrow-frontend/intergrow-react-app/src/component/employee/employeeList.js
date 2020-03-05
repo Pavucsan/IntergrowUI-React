@@ -1,13 +1,9 @@
 import axios from 'axios';
-import { MDBBtn, MDBContainer } from 'mdbreact';
 import React from "react";
-import { Button, FormGroup, Input, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import { COURSE_API_URL, TITLE_COLOR } from '../../constants/utill';
+import { Redirect } from 'react-router';
+import { COURSE_API_URL } from '../../constants/utill';
 import CreateEmployee from './sections/createEmployee';
 import EmployeeHeader from './sections/employeeHeader';
-import Axios from 'axios';
-import { Redirect } from 'react-router';
-import EmployeeTableView from './sections/employeeTableView';
 import EmpTab from './sections/employeeTable/empTab';
 
 
@@ -55,9 +51,8 @@ class EmployeeList extends React.Component {
         return (
 
             <div>
-                <section className={"card wow fadeIn text-uppercase "+ TITLE_COLOR}>
-                    <EmployeeHeader/>
-                </section>              
+                
+                <EmployeeHeader/>     
                     
                 <div className="container ">
                     {/* <EmployeeTableView employees={this.state.employees}/> */}
