@@ -23,7 +23,7 @@ const App = () => {
     }
 
     return (
-      <div className='text-center full' style={{textAlignVertical: 'center'}}>
+      <div className='text-center mt-4 mb-5 py-5' style={{textAlignVertical: 'center'}}>
           <Login userLogin={userLogin}/>
       </div>
     );

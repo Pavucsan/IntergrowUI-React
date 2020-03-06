@@ -13,10 +13,12 @@
 // export default footer;
 
 import React from "react";
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter, MDBIcon } from "mdbreact";
+import '../../css/footer.css';
 
 const footer = () => {
   return (
+    <div>
     <MDBFooter color="unique-color-dark" className="font-small pt-4 mt-4">
       <MDBContainer fluid className="text-center text-md-left">
         <MDBRow>
@@ -30,16 +32,16 @@ const footer = () => {
             <h5 className="title" style={{float:'left'}}>Social media</h5>
             <ul >
               <li className="list-unstyled" style={{float:'left', paddingLeft:'20px'}}>
-                <a href="#!"><i className="fa fa-facebook mr-3"></i>Facebook</a>
+                <a href="#!"><MDBIcon fab icon="facebook-square mr-1" />Facebook</a>
               </li>
               <li className="list-unstyled" style={{float:'left', paddingLeft:'20px'}}>
-                <a href="#!"><i className="fa fa-twitter mr-3"></i>Twitter</a>
+                <a href="#!"><MDBIcon fab icon="twitter-square mr-1" />Twitter</a>
               </li>
               <li className="list-unstyled" style={{float:'left', paddingLeft:'20px'}}>
-                <a href="#!"><i className="fas fa-home mr-3"></i>Youtube</a>
+                <a href="#!"><MDBIcon fab icon="youtube-square mr-1" />Youtube</a>
               </li>
               <li className="list-unstyled" style={{float:'left', paddingLeft:'20px'}}>
-                <a href="#!"><i className="fas fa-home mr-3"></i>LinkedIn</a>
+                <a href="#!"><MDBIcon fab icon="linkedin mr-1" />LinkedIn</a>
               </li>
             </ul>
           </MDBCol>
@@ -55,6 +57,7 @@ const footer = () => {
         </MDBContainer>
       </div>
     </MDBFooter>
+    </div>
   );
 }
 

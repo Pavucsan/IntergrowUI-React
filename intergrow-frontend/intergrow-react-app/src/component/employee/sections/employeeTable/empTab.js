@@ -40,8 +40,10 @@ const EmpTab = () =>{
             <section>
                 <MDBContainer className="card p-4 mt-4" style={{
                     display: "flex",
-                    justifyContent: "center",
+                    // justifyContent: "center",
                     alignItems: "center",
+                    
+                    height:'500px'
                     // backgroundColor:"rgb(175, 200, 209)"
                     }}>
                     {/* <h3 className="card-header text-center font-weight-bold text-uppercase py-4">Employees</h3> */}

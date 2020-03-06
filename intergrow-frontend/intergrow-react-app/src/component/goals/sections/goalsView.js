@@ -1,9 +1,9 @@
 import Axios from 'axios';
 import { MDBContainer } from 'mdbreact';
 import React from 'react';
-import { ToastHeader } from 'reactstrap';
+import { ToastHeader, Alert } from 'reactstrap';
 import PaginationCust from '../../../constants/Pagination';
-import { COURSE_API_URL } from '../../../constants/utill';
+import { COURSE_API_URL, BG_COLOR } from '../../../constants/utill';
 
 
 
@@ -71,13 +71,28 @@ class GoalsView extends React.Component{
                     display: "flex",
                     // justifyContent: "left",
                     alignItems: "center",
-                    backgroundColor:"rgb(175, 200, 209)"
+                    backgroundColor:"rgb(175, 200, 209)",
+                    height:'250px'
                     }}>
                    
                     {viewGoals}
-                    <PaginationCust postsPerPage={this.state.postsPerPage} totalPosts={this.state.goals.length} paginate={paginate}/>
+                    {/* <PaginationCust postsPerPage={this.state.postsPerPage} totalPosts={this.state.goals.length} paginate={paginate}/> */}
                 </MDBContainer>
             {/* </div> */}
+            <div className='mt-2 pt-2' color={BG_COLOR} style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    // backgroundColor:"rgb(175, 200, 209)"
+                    }}>
+                    {
+                        currentPosts.length > 0 ? <PaginationCust postsPerPage={this.state.postsPerPage} totalPosts={this.state.goals.length} paginate={paginate}/>
+
+                        : <Alert color="danger">
+                                Nothing Goal available!
+                            </Alert>
+                    }                      
+            </div> 
         </section>      
         )
     }

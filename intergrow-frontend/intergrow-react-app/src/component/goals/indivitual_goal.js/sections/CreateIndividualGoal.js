@@ -66,7 +66,7 @@ class CreateIndividualGoal extends React.Component{
         return(
             <section>
                 {/* <div className=" mb-2 mt-2 pt-2 pb-2  wow fadeIn"> */}
-                <MDBContainer className="card p-1 mt-4" style={{
+                <MDBContainer className="card p-1 mt-1" style={{
                     display: "flex",
                     // justifyContent: "left",
                     alignItems: "left",

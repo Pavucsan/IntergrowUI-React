@@ -1,6 +1,6 @@
 import { MDBContainer, MDBIcon } from 'mdbreact';
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalFooter } from 'reactstrap';
 import { COURSE_API_URL } from '../../../../constants/utill';
 import Axios from 'axios';
 
@@ -11,6 +11,7 @@ class IndiGoalProgressView extends React.Component{
         super(props);
         this.state = {
             individual_goal_progress:[],
+            modalEdit:false,
 
         }
     }
@@ -27,6 +28,17 @@ class IndiGoalProgressView extends React.Component{
                 
         })
     }
+    toggleEdit(id){
+        console.log(id)
+        this.setState({
+            modalEdit:true
+        })
+    }
+    closeToggle(){
+        this.setState({
+            modalEdit:false
+        })
+    }
     
     render(){
         return(
@@ -34,7 +46,7 @@ class IndiGoalProgressView extends React.Component{
             <section>
                 <div className="card">
                 <div className="card-header white">
-                    <p className="h5-responsive font-weight-bold mb-0"><i className="fas fa-tasks pr-2"></i>Goal</p>
+                    <p className="h5-responsive font-weight-bold mb-0"><i className="fas fa-tasks pr-2"></i>Individual Goal Progress</p>
                 </div>
                 <div className="card-body my-custom-scrollbar">
                     <div className="media">
@@ -62,7 +74,7 @@ class IndiGoalProgressView extends React.Component{
                                         <span className="small text-muted float-right pr-2">
                                             <i className="far fa-clock pr-1"></i>
                                             {gp.progress_date}
-                                            <Button color='warning' className="btn btn-warning btn-sm mb-0 mr-0">Edit</Button>
+                                            <Button color='warning' className="btn-sm mb-0 ml-2 m-0 p-2" onClick={() => this.toggleEdit(gp.id)}><MDBIcon icon={'edit'}/></Button>
                                         </span>
                                     </h6>
                                     {/* <small className="font-italic">Theme-thumbnail-image.jpg</small> */}
@@ -74,6 +86,13 @@ class IndiGoalProgressView extends React.Component{
                                 )
                             })
                         } 
+                        <Modal isOpen={this.state.modalEdit} toggle={this.toggleEdit.bind(this)}>
+                            <ModalHeader>Edit Progress</ModalHeader>
+                            <ModalFooter>
+                                <Button color={'primary'} className={'btn-sm'}>Update</Button>
+                                <Button color={'danger'} className={'btn-sm'} onClick={this.closeToggle.bind(this)}>Cancel</Button>
+                            </ModalFooter>
+                        </Modal>
                         </div>
                         </div>
                     </div>

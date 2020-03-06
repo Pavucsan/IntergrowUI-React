@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'mdbreact/dist/css/mdb.css';
+import UserImg from '../../../../assets/user.png'; 
 
 class EmployeeView extends React.Component{
     constructor(props){
@@ -12,13 +13,14 @@ class EmployeeView extends React.Component{
                 <div class="col-md-12 col-lg-12 mx-auto">
                 <section>
                     <div class="card testimonial-card">
+                        
                         <div class="card-up warning-color-dark p-3 white-text">
                         <p class="font-weight-normal mb-0">{this.props.employee.full_name}</p>
                         <p class="small mb-0">JavaScript Developer</p>
                         </div>
 
-                        <div class="avatar mx-auto white">
-                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg" class="rounded-circle" alt="woman avatar"/>
+                        <div class="avatar mx-auto white card pt-2 pb-2" style={{justifyItems:'center', alignItems:'center', display: "flex", maxWidth: '90vw'}}>
+                        <img src={UserImg} className="rounded-circle w-25" alt="User"/>
                         </div>
 
                         <div class="card-body px-3 py-4 warning-color-dark">

@@ -5,6 +5,7 @@ import { COURSE_AUTH_URL, TITLE_COLOR } from '../../constants/utill';
 import { Redirect } from 'react-router';
 import Home from '../core/home';
 import { MDBContainer } from 'mdbreact';
+import AdminTitleCard from '../core/section/AdminTitleCard';
 
 
 class Login extends React.Component{
@@ -106,44 +107,70 @@ class Login extends React.Component{
       return(<Redirect to={'home/'}/>)
     }
     return (
-      <div className="py-5">
-        {/* <Button onClick={this.loginToggle.bind(this)}>Login</Button> */}
-        {/* <Modal isOpen={this.state.newLoginModal} toggle={this.loginToggle.bind(this)}> */}
-        {/* <Modal isOpen='true' toggle={this.loginToggle.bind(this)}> */}
-        <MDBContainer className={'card align-items-center col-xl-4 col-md-6  z-depth-3 text-white-50'+ TITLE_COLOR} >
-          <ModalHeader onClick = {this.loginToggle.bind(this)} className='text-white text-uppercase'><strong>Login</strong></ModalHeader>
-            <ModalBody>
-            <FormGroup>
-                <InputGroupAddon addonType="prepend">
-                    <InputGroupText><i className="fas fa-user mr-2" ></i>
-                    <Input placeholder="User Name"
-                    name='username'
-                     value={this.state.credencials.username}
-                     onChange={this.inputChange}
-                    /></InputGroupText>
-                </InputGroupAddon>
-            </FormGroup>   
-            <FormGroup>
-                <InputGroupAddon addonType="prepend">
-                    <InputGroupText><i className="fas fa-key mr-2" ></i>
-                    <Input type='password' placeholder="Password" 
-                    name = 'password'
-                    value={this.state.credencials.password}
-                    onChange={this.inputChange}
-                    /></InputGroupText>
-                </InputGroupAddon>
-            </FormGroup> 
-            <small>
-          <a className='text-left pb-2 zoom text-white-50'>forget password</a>
-          </small>  
-          </ModalBody>
-          {/* <ModalFooter> */}
-            <Button color="primary" rounded='true' onClick = {this.login} className='mb-2'>Login</Button>
-            {/* <Button color="danger" rounded='true'  onClick = {this.closeToggle.bind(this)} >Cancel</Button> */}
-          {/* </ModalFooter> */}
-        {/* </Modal>    */}
-        </MDBContainer>
-      </div>
+      <div> 
+            {/* <AdminTitleCard/> */}
+            <div class="">
+              <section class="dark-grey-text">
+                <div class="row pr-lg-12 mr-2">
+                  <div class="col-md-3 col-lg-3 mb-4 ">
+                    <div class="view">
+                      <img src="https://mdbootstrap.com/img/illustrations/drawkit-drawing-man-colour.svg" class="img-fluid" alt="smaple image"/>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-lg-4 d-flex align-items-center text-justify">
+                  
+                    <p class="text-justify">
+                    <h3 class="font-weight-bold">Intergrow</h3>
+                      Mentee requests for a help, Mentor reponses to help for the requested activity by Mentee.For the 1st phase we assume that Mentee and Mentor are only responsible for software
+                        development tasks.Assuming that mentee requests help for a code review activity and receive help from a Mentor. Based on completion of this activity, Following data source will be used
+                        to obtain data to relate intergrow activity to real user story and rest of other tracking data.
+                      </p>
+
+                  </div>
+                  <div class="col-md-4 col-lg-4 d-flex align-items-center text-justify">
+                      {/* <div className="py-5"> */}
+                        {/* <Button onClick={this.loginToggle.bind(this)}>Login</Button> */}
+                        {/* <Modal isOpen={this.state.newLoginModal} toggle={this.loginToggle.bind(this)}> */}
+                        {/* <Modal isOpen='true' toggle={this.loginToggle.bind(this)}> */}
+                        <MDBContainer className={'card align-items-center col-xl-12 col-md-12  z-depth-3 text-white-50'+ TITLE_COLOR} >
+                          <ModalHeader onClick = {this.loginToggle.bind(this)} className='text-white text-uppercase'><strong>Login</strong></ModalHeader>
+                            <ModalBody>
+                            <FormGroup>
+                                <InputGroupAddon addonType="prepend">
+                                    <InputGroupText><i className="fas fa-user mr-2" ></i>
+                                    <Input placeholder="User Name"
+                                    name='username'
+                                    value={this.state.credencials.username}
+                                    onChange={this.inputChange}
+                                    /></InputGroupText>
+                                </InputGroupAddon>
+                            </FormGroup>   
+                            <FormGroup>
+                                <InputGroupAddon addonType="prepend">
+                                    <InputGroupText><i className="fas fa-key mr-2" ></i>
+                                    <Input type='password' placeholder="Password" 
+                                    name = 'password'
+                                    value={this.state.credencials.password}
+                                    onChange={this.inputChange}
+                                    /></InputGroupText>
+                                </InputGroupAddon>
+                            </FormGroup> 
+                            <small>
+                          <a className='text-left pb-2 zoom text-white-50'>forget password</a>
+                          </small>  
+                          </ModalBody>
+                          {/* <ModalFooter> */}
+                            <Button color="primary" rounded='true' onClick = {this.login} className='mb-2'>Login</Button>
+                            {/* <Button color="danger" rounded='true'  onClick = {this.closeToggle.bind(this)} >Cancel</Button> */}
+                          {/* </ModalFooter> */}
+                        {/* </Modal>    */}
+                        </MDBContainer>
+                    </div>
+                  </div>
+              </section>
+              </div>
+            </div>
+      
     );
   }
 

@@ -103,7 +103,7 @@ class Home extends React.Component {
         <React.Fragment>
         <div> 
             <AdminTitleCard/>
-            <div class=" z-depth-1">
+            {/* <div class=" z-depth-1">
               <section class="dark-grey-text">
                 <div class="row pr-lg-5">
                   <div class="col-md-7 mb-4">
@@ -120,12 +120,11 @@ class Home extends React.Component {
                         to obtain data to relate intergrow activity to real user story and rest of other tracking data.
                       </p>
 
-                      {/* <button type="button" class="btn btn-orange btn-rounded mx-0">Download</button> */}
                     </div>
                   </div>
                 </div>
               </section>
-              </div>
+              </div> */}
             
             <MDBContainer xl="1" className='w-100'>
 

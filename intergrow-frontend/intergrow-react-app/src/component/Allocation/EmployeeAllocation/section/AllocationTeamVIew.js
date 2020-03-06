@@ -143,7 +143,7 @@ class AllocationTeamView extends React.Component{
                             <FormGroup>
                                     <InputGroupAddon addonType="prepend">
                                     <InputGroupText><i className="fas fa-user mr-2" ></i></InputGroupText>
-                                    <Input placeholder='Emp id' type='select' 
+                                    <Input placeholder='Emp id' type='select'
                                         value={this.state.member_id}
                                         onChange = {(e)=>{
                                             let {newEmpAllocation} = this.state;
@@ -151,10 +151,11 @@ class AllocationTeamView extends React.Component{
                                             this.setState({newEmpAllocation});
                                         }}
                                     >
+                                        <option>{'<<Employee>>'}</option>
                                         {
                                             this.state.employees.map((emp)=>{
                                                 return(
-                                                    <option key={emp.id} value={emp.id}> {emp.first_name + ':' + emp.employee_id} </option>
+                                                    <option  className='force-overflow' key={emp.id} value={emp.id}> {emp.first_name + ':' + emp.employee_id} </option>
                                                 )
                                             })
                                         }

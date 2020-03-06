@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { MDBContainer } from 'mdbreact';
 import React from 'react';
 import { Badge, Jumbotron, Label, Progress, ToastHeader, Alert } from 'reactstrap';
-import { COURSE_API_URL } from '../../../../constants/utill';
+import { COURSE_API_URL, BG_COLOR } from '../../../../constants/utill';
 import PaginationCust from '../../../../constants/Pagination';
 
 
@@ -79,24 +79,19 @@ class IndividualGoalView extends React.Component{
 
         return(
             <section>
-                <MDBContainer className="card p-4 mt-4" style={{
+                <MDBContainer className="card pt-3 mt-4" style={{
                     display: "flex",
-                    justifyContent: "center",
+                    // justifyContent: "center",
                     alignItems: "center",
-                    backgroundColor:"rgb(175, 200, 209)"
+                    backgroundColor:"rgb(175, 200, 209)",
+                    height:'250px'
                     }}>
                         {/* <MDBContainer className='col-lg-12 col-md-12 col-sm-12 mr-0'> */}
                             {/* <Jumbotron className='mb-1 pb-4 pt-5'>   */}
                             {viewGoals}
                             {/* </Jumbotron>                              */}
 
-                    {
-                        currentPosts.length > 0 ? <PaginationCust postsPerPage={this.state.postsPerPage} totalPosts={this.state.individual_goals.length} paginate={paginate}/>
-                        : <Alert color="danger">
-                                Nothing Goal available!
-                            </Alert>
-                    }
-                                             
+                                           
                         {/* </MDBContainer> */}
 
                         {/* <MDBContainer className=" col-lg-4 col-md-4 col-sm-12 ml-0">
@@ -115,6 +110,17 @@ class IndividualGoalView extends React.Component{
                         </MDBContainer> */}
                 </MDBContainer>
             {/* </div> */}
+            <div className='mt-2 pt-2' color={BG_COLOR} style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    // backgroundColor:"rgb(175, 200, 209)"
+                    }}>
+                    {
+                        currentPosts.length > 0 ? <PaginationCust postsPerPage={this.state.postsPerPage} totalPosts={this.state.individual_goals.length} paginate={paginate}/>
+                        : <Alert color="danger">Nothing Goal available!</Alert>
+                    }                      
+            </div>    
         </section>      
         )
     }

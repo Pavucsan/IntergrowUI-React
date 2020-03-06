@@ -22,10 +22,12 @@ class CreateEmployee extends React.Component{
                 address:'',
                 user:[]
             },
-            credencials: {username: '', password: ''},
+            group_id:'',
+            credencials: {username: '', password: '', first_name:'', last_name:'', is_staff:true, email:'', groups:[]},
             newEmployeeModal:false,    
             errorMsg:'',
             loading:true,
+            sample:[],
         }
         
     }
@@ -105,54 +107,69 @@ class CreateEmployee extends React.Component{
     }
     addEmployee = (e) =>
     {
-        fetch(COURSE_AUTH_USERS_URL, {
-            method : 'POST',
-            headers : {'Content-Type' : 'application/json'},
-            body : JSON.stringify(this.state.credencials)
-            })
-            // 1st get the data as json
-            .then(data => data.json())
-            // use json data 'use token as authendication'
-            .then(data => {
-                Axios.get(COURSE_API_URL + `users/${this.state.credencials.username}`).then((response) => {
-                    // console.log(response.data);
-                    let {newEmployeeData} = this.state;
-                    newEmployeeData.user = response.data.id;
-                    this.setState({
-                        newEmployeeData,
-                    });            
-                console.log(this.state.newEmployeeData);
-                Axios.post(COURSE_API_URL + 'employees/', this.state.newEmployeeData).then((response)=>{
+        console.log(this.state.group_id);
+        Axios.get(COURSE_API_URL + `group/${this.state.group_id}`).then((response) =>{
+            // console.log(response.data);
+            // this.setState({sample:[response.data.name]})
+            // console.log(this.state.sample);
+        // })
+        const gg = this.state.credencials;
+        // target will set at onChange and find by name 
+        gg['groups'] = [response.data];
+        this.setState({
+          credencials:gg,
+        })
+        console.log(JSON.stringify(this.state.credencials));
 
-                console.log(response.data);
-                let {employees} = this.state;
-                employees.push(response.data);
+        // fetch(COURSE_AUTH_USERS_URL, {
+        //     method : 'POST',
+        //     headers : {'Content-Type' : 'application/json'},
+        //     body : JSON.stringify(this.state.credencials)
+        //     })
+        //     // 1st get the data as json
+        //     .then(data => data.json())
+        //     // use json data 'use token as authendication'
+        //     .then(data => {
+        //         Axios.get(COURSE_API_URL + `users/${this.state.credencials.username}`).then((response) => {
+        //             // console.log(response.data);
+        //             let {newEmployeeData} = this.state;
+        //             newEmployeeData.user = response.data.id;
+        //             this.setState({
+        //                 newEmployeeData,
+        //             });            
+        //         console.log(this.state.newEmployeeData);
+        //         Axios.post(COURSE_API_URL + 'employees/', this.state.newEmployeeData).then((response)=>{
 
-                this.setState({
-                    newEmployeeModal:false,
-                    employees,
+        //         console.log(response.data);
+        //         let {employees} = this.state;
+        //         employees.push(response.data);
 
-                    employee_id: '',
-                    full_name:'',
-                    first_name:'',
-                    last_name:'',
-                    email:'',
-                    phone_number:'',
-                    address:'',
-                    user:[]
-                });
-            });                    
-            });
-            if(data.token == null){        
-                console.error("Register faild!");  
-                // this.closeToggle();
-            }
-            else{
-                console.log("Registration success");
-                console.log(data.token);
-                // this.closeToggle();********************************************************
-            }
-            })              
+        //         this.setState({
+        //             newEmployeeModal:false,
+        //             employees,
+
+        //             employee_id: '',
+        //             full_name:'',
+        //             first_name:'',
+        //             last_name:'',
+        //             email:'',
+        //             phone_number:'',
+        //             address:'',
+        //             user:[]
+        //         });
+        //     });                    
+        //     });
+        //     if(data.token == null){        
+        //         console.error("Register faild!");  
+        //         // this.closeToggle();
+        //     }
+        //     else{
+        //         console.log("Registration success");
+        //         console.log(data.token);
+        //         // this.closeToggle();********************************************************
+        //     }
+        //     })
+        })
             //   window.location.reload();
     }
         
@@ -178,7 +195,7 @@ class CreateEmployee extends React.Component{
                             <ModalBody className='col-lg-7 col-md-7 col-sm-12 mr-0'>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-id-card-alt mr-2" ></i></InputGroupText>
+                                        <InputGroupText><i className="fas fa-id-card-alt mr-2" ></i>
                                         <Input placeholder="Employee id" value={this.state.newEmployeeData.employee_id} onChange={(e) =>
                                         {
                                             let { newEmployeeData } = this.state;
@@ -187,12 +204,12 @@ class CreateEmployee extends React.Component{
 
                                             this.setState({ newEmployeeData });
 
-                                        }} required/>
+                                        }} required/></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-address-card mr-2" ></i></InputGroupText>
+                                        <InputGroupText><i className="fas fa-address-card mr-2" ></i>
                                         <Input placeholder="FullName" value={this.state.newEmployeeData.full_name} onChange={(e) =>
                                         {
                                             let { newEmployeeData } = this.state;
@@ -201,12 +218,12 @@ class CreateEmployee extends React.Component{
 
                                             this.setState({ newEmployeeData });
 
-                                        }} required/>
+                                        }} required/></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-address-card mr-2" ></i></InputGroupText>
+                                        <InputGroupText><i className="fas fa-address-card mr-2" ></i>
                                         <Input placeholder="Fistname" value={this.state.newEmployeeData.first_name} onChange={(e) =>
                                         {
                                             let { newEmployeeData } = this.state;
@@ -215,12 +232,12 @@ class CreateEmployee extends React.Component{
 
                                             this.setState({ newEmployeeData });
 
-                                        }} required/>
+                                        }} required/></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-address-card mr-2" ></i></InputGroupText>
+                                        <InputGroupText><i className="fas fa-address-card mr-2" ></i>
                                         <Input placeholder="Lastname" value={this.state.newEmployeeData.last_name} onChange={(e) =>
                                         {
                                             let { newEmployeeData } = this.state;
@@ -229,12 +246,12 @@ class CreateEmployee extends React.Component{
 
                                             this.setState({ newEmployeeData });
 
-                                        }} required/>
+                                        }} required/></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-envelope mr-2" ></i></InputGroupText>
+                                        <InputGroupText><i className="fas fa-envelope mr-2" ></i>
                                         <Input placeholder="Email" value={this.state.newEmployeeData.email} onChange={(e) =>
                                         {
                                             let { newEmployeeData } = this.state;
@@ -243,13 +260,14 @@ class CreateEmployee extends React.Component{
 
                                             this.setState({ newEmployeeData });
 
-                                        }} required/>
+                                        }} required/></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-phone mr-2" ></i></InputGroupText>
-                                        <Input placeholder="Phone No." value={this.state.newEmployeeData.phone_number} onChange={(e) =>
+                                        <InputGroupText><i className="fas fa-phone mr-2" ></i>
+                                        <Input placeholder="Phone No." value={this.state.newEmployeeData.phone_number} 
+                                        onChange={(e) =>
                                         {
                                             let { newEmployeeData } = this.state;
 
@@ -257,12 +275,12 @@ class CreateEmployee extends React.Component{
 
                                             this.setState({ newEmployeeData });
 
-                                        }} />
+                                        }} /></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-map-marker-alt mr-2" ></i></InputGroupText>
+                                        <InputGroupText><i className="fas fa-map-marker-alt mr-2" ></i>
                                         <Input placeholder="Address" value={this.state.newEmployeeData.address} onChange={(e) =>
                                         {
                                             let { newEmployeeData } = this.state;
@@ -271,7 +289,7 @@ class CreateEmployee extends React.Component{
 
                                             this.setState({ newEmployeeData });
 
-                                        }} />
+                                        }} /></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                             </ModalBody>
@@ -279,41 +297,46 @@ class CreateEmployee extends React.Component{
                             <ModalBody className='col-lg-5 col-md-5 col-sm-12 mr-0 size-auto grey'>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-user mr-2" ></i></InputGroupText>
+                                        <InputGroupText><i className="fas fa-user mr-2" ></i>
                                         <Input placeholder="User Name"
                                         name='username'
                                         value={this.state.credencials.username}
                                         onChange={this.inputChange}
-                                        />
+                                        /></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
-                                        <InputGroupText><i className="fas fa-key" ></i></InputGroupText>
+                                        <InputGroupText><i className="fas fa-key" ></i>
                                         <Input type='password' placeholder="Password"
                                         name='password'
                                         value={this.state.credencials.password}
                                         onChange={this.inputChange}
-                                        />
+                                        /></InputGroupText>
                                     </InputGroupAddon>
                                 </FormGroup>
                                 <hr/>
                                 <FormGroup>
                                     <InputGroupAddon addonType="prepend">
                                         <Input placeholder="Role" 
-                                            type='select'
+                                            type='select'                                            
+                                            value={this.state.group_id}
+                                            onChange={(e)=>{
+                                                let {group_id} = this.state;
+                                                group_id = e.target.value;
+                                                this.setState({
+                                                    group_id
+                                                })
+                                            }}
                                         >
                                             <option>Select Role</option>
-                                            {
-                                       
+                                            {                                       
                                                 this.state.groups.map((gp) =>{
                                                     return(
-                                                        <option value={gp.name} key={gp.id}>{gp.name}</option>
+                                                        <option value={gp.id} key={gp.id}>{gp.name}</option>
                                                     )
-                                                })
-                                                
+                                                })                                                
                                             }
-
                                         </Input>
                                     </InputGroupAddon>
                                 </FormGroup>
