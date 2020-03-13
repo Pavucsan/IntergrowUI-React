@@ -20,7 +20,7 @@ class Profile extends React.Component {
         return (
 
             <div>
-                <ProfileHeader/>
+                {/* <ProfileHeader/> */}
 
                 <ProfileView/>              
 

@@ -26,9 +26,10 @@ class header extends React.Component{
   }
   componentWillMount()
     {
+      // console.log('%c ***INTERGROW***', 'background: #222; color: green')
         if(sessionStorage.getItem('userData')){
-            console.log('Header');
-            console.log(sessionStorage.getItem('username'));
+            // console.log('Header');
+            // console.log(sessionStorage.getItem('username'));
             this.setState({
               username:sessionStorage.getItem('username')
             })
@@ -88,7 +89,7 @@ class header extends React.Component{
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
-            <MDBNavItem className="pt-2 pl-3 " nav caret >
+            <MDBNavItem className="pt-2 pl-3 " nav='true' caret='true' >
               <a className="white-text" href="/help">Help</a>
             </MDBNavItem>
             <MDBNavItem className="pl-3">

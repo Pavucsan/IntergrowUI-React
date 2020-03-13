@@ -1,6 +1,4 @@
-import { MDBContainer } from 'mdbreact';
 import React from 'react';
-import { Label, Progress } from 'reactstrap';
 
 
 class AdminOverallProgressCard extends React.Component{

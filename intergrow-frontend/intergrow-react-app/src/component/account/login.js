@@ -111,7 +111,7 @@ class Login extends React.Component{
             {/* <AdminTitleCard/> */}
             <div class="">
               <section class="dark-grey-text">
-                <div class="row pr-lg-12 mr-2">
+                <div class="row pr-lg-12 mr-5 pb-3">
                   <div class="col-md-3 col-lg-3 mb-4 ">
                     <div class="view">
                       <img src="https://mdbootstrap.com/img/illustrations/drawkit-drawing-man-colour.svg" class="img-fluid" alt="smaple image"/>
@@ -127,12 +127,12 @@ class Login extends React.Component{
                       </p>
 
                   </div>
-                  <div class="col-md-4 col-lg-4 d-flex align-items-center text-justify">
+                  <div class="col-md-4 col-lg-4 d-flex align-items-center ">
                       {/* <div className="py-5"> */}
                         {/* <Button onClick={this.loginToggle.bind(this)}>Login</Button> */}
                         {/* <Modal isOpen={this.state.newLoginModal} toggle={this.loginToggle.bind(this)}> */}
                         {/* <Modal isOpen='true' toggle={this.loginToggle.bind(this)}> */}
-                        <MDBContainer className={'card align-items-center col-xl-12 col-md-12  z-depth-3 text-white-50'+ TITLE_COLOR} >
+                        <MDBContainer className={'card align-items-center col-xl-12 col-lg-12 col-md-12  z-depth-3 text-white-50'+ TITLE_COLOR} >
                           <ModalHeader onClick = {this.loginToggle.bind(this)} className='text-white text-uppercase'><strong>Login</strong></ModalHeader>
                             <ModalBody>
                             <FormGroup>
@@ -160,7 +160,7 @@ class Login extends React.Component{
                           </small>  
                           </ModalBody>
                           {/* <ModalFooter> */}
-                            <Button color="primary" rounded='true' onClick = {this.login} className='mb-2'>Login</Button>
+                            <Button color="primary" rounded='true' onClick = {this.login} className='mb-2 btn-sm rounded d-flex'>Login</Button>
                             {/* <Button color="danger" rounded='true'  onClick = {this.closeToggle.bind(this)} >Cancel</Button> */}
                           {/* </ModalFooter> */}
                         {/* </Modal>    */}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'mdbreact/dist/css/mdb.css';
+// import 'mdbreact/dist/css/mdb.css';
 import UserImg from '../../../../assets/user.png'; 
 
 class EmployeeView extends React.Component{
@@ -8,22 +8,23 @@ class EmployeeView extends React.Component{
     }
     render(){
     return(        
-        <div class=" card">
+        <div class="card">
             <div class="row">
                 <div class="col-md-12 col-lg-12 mx-auto">
                 <section>
                     <div class="card testimonial-card">
                         
-                        <div class="card-up warning-color-dark p-3 white-text">
+                        <div class="card-up info-color-dark p-3 white-text" color='info'>
                         <p class="font-weight-normal mb-0">{this.props.employee.full_name}</p>
                         <p class="small mb-0">JavaScript Developer</p>
                         </div>
-
-                        <div class="avatar mx-auto white card pt-2 pb-2" style={{justifyItems:'center', alignItems:'center', display: "flex", maxWidth: '90vw'}}>
-                        <img src={UserImg} className="rounded-circle w-25" alt="User"/>
+                        
+                        <div class="card-up info-color"></div>
+                        <div class="avatar mx-auto">
+                        <img src={UserImg}  className="rounded-circle img-fluid w-25" alt="User"/>
                         </div>
 
-                        <div class="card-body px-3 py-4 warning-color-dark">
+                        <div class="card-body card px-3 py-4 white">
                         <div class="row">
                             <div class="col-3 text-center">
                             <p class="font-weight-bold mb-0">{this.props.goal.length}</p>

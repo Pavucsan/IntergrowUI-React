@@ -51,12 +51,14 @@ class GoalsView extends React.Component{
         let viewGoals = currentPosts.map((goal) =>{
             return(
 
-                <MDBContainer className='card mb-2  #90caf9 blue lighten-3' key={goal.id}>
+                <MDBContainer className={goal.is_inprogress === true ? '#ffff00 yellow accent-2 card mb-2' : '#76ff03 light-green accent-3 card mb-2'} key={goal.id}>
                     <a href={'/goal/' + goal.id} >   
                     <ToastHeader>
                     {/* <ChildComponent tmId={1}/>    */}
                     &nbsp; {goal.goal_discription}&nbsp; 
                     <small>{goal.start_date}</small> &nbsp;
+                    {/* {console.log(goal.is_inprogress)} */}
+                    
                     {/* <Badge color="warning" className='end'>
                         Edit
                     </Badge> */}
@@ -67,13 +69,15 @@ class GoalsView extends React.Component{
         })
         return(
             <section>
+                
                 <MDBContainer MDBContainer className="card p-4 mt-4" style={{
                     display: "flex",
                     // justifyContent: "left",
                     alignItems: "center",
                     backgroundColor:"rgb(175, 200, 209)",
-                    height:'250px'
+                    height:'350px'
                     }}>
+                        
                    
                     {viewGoals}
                     {/* <PaginationCust postsPerPage={this.state.postsPerPage} totalPosts={this.state.goals.length} paginate={paginate}/> */}

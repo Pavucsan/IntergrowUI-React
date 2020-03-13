@@ -89,8 +89,8 @@ class AllocationTeamView extends React.Component{
                 <div className="card z-depth-3 text-uppercase pl-2 pt-2" color="white">
                     <span><h3>
                     <span className="small">                    
-                     Team : <i className="fas fa-users pr-1"></i> <strong>{this.state.team.team_name} 
-                     <Button color="primary" className="p-3 float-right" onClick={this.toggle.bind(this)}><i className="fas fa-plus pr-1"></i></Button>
+                     Team : <strong className='text-primary zoom'>{this.state.team.team_name} 
+                     <Button color="primary" className="float-right btn-sm" onClick={this.toggle.bind(this)}><i className="fas fa-plus p-1"></i></Button>
                      </strong>
                      </span>
                 
@@ -110,7 +110,7 @@ class AllocationTeamView extends React.Component{
                 {
                     this.state.allocations.map((alloc) => {
                         return(
-                            <section class="card text-lg-left dark-grey-text my-2 pl-3 zoom">  
+                            <section className="card text-lg-left dark-grey-text my-2 pl-3 zoom">  
                                 <div class="media d-block d-md-flex mt-3">                        
                                     <img class="card-img-64 rounded z-depth-1 d-flex mb-4"
                                     src="https://mdbootstrap.com/img/Photos/Avatars/img (20).jpg" alt="Generic placeholder image"/>
@@ -127,7 +127,8 @@ class AllocationTeamView extends React.Component{
                                             </div>
                                         </div>  
                                         <span className="small text-muted float-right pr-2">
-                                            <Button color="warning"><i className="fas fa-edit pr-1 zoom"></i></Button>
+                                            <Button color="warning" className={'btn-sm'}><i className="fas fa-edit p-1 zoom"></i></Button>
+                                            <Button color="danger" className={'btn-sm'}><i className="fas fa-trash-alt p1-1 zoom"></i></Button>
                                             </span>
                                     </div>
                                 </div>                    
@@ -202,8 +203,8 @@ class AllocationTeamView extends React.Component{
                                 </FormGroup>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.createMember.bind(this)}>Add</Button>
-                                <Button color="danger" onClick={this.toggleClose.bind(this)}>Cancel</Button>
+                                <Button color="danger" className={'btn-sm'} onClick={this.toggleClose.bind(this)}>Cancel</Button>
+                                <Button color="primary" className={'btn-sm'} onClick={this.createMember.bind(this)}>Add</Button>
                             </ModalFooter>
                         </Modal>  
                 

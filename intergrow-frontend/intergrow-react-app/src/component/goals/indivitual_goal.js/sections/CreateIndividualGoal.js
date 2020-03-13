@@ -75,6 +75,8 @@ class CreateIndividualGoal extends React.Component{
                         
 
                     <span className="pull-right">
+                    <div className='mt-3 ml-3 mr-2 float-right'><strong>Complete</strong><div className='p-1 #76ff03 light-green accent-3'></div></div>
+                    <div className='mt-3 float-right'><strong>In Progress</strong><div className='p-1 #ffff00 yellow accent-2'></div></div>
                     <MDBBtn 
                     color = 'primary'                        
                     className={'btn btn-info'}

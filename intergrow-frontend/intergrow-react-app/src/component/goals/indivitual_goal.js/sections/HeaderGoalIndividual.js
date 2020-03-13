@@ -22,12 +22,12 @@ class Header extends React.Component{
                     </p>
                 </div>  
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb indigo lighten-4">
-                    <li class="breadcrumb-item"><a class="black-text" href="/home">Dashboard</a><i class="fas fa-caret-right mx-2"
+                    <ol className="breadcrumb indigo lighten-4">
+                    <li className="breadcrumb-item"><a className="black-text" href="/home">Dashboard</a><i className="fas fa-caret-right mx-2"
                         aria-hidden="true"></i></li>
-                    {/* <li class="breadcrumb-item"><a class="black-text" href="#">Library</a><i class="fas fa-caret-right mx-2"
+                    {/* <li className="breadcrumb-item"><a className="black-text" href="#">Library</a><i className="fas fa-caret-right mx-2"
                         aria-hidden="true"></i></li> */}
-                    <li class="breadcrumb-item active">Individual Goal</li>
+                    <li className="breadcrumb-item active">Individual Goal</li>
                     </ol>
                 </nav>
             </section>

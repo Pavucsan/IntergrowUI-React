@@ -20,7 +20,7 @@ class AdminGoalsCard extends React.Component{
           <span className="pull-right m-2 mt-5">
             <MDBRow className="mb-4">
               <MDBCol xl="3" md="6" className="mb-r">
-                <Link to='/employee/'>
+                <Link to='/employeelist/'>
                 <MDBCard className="cascading-admin-card">
                     <div className="admin-up">
                     <MDBIcon icon="users" className="red accent-2"/>
@@ -42,7 +42,7 @@ class AdminGoalsCard extends React.Component{
                   </Link>
               </MDBCol>
               <MDBCol xl="3" md="6" className="mb-r">
-                <Link to='/team/'>
+                <Link to='/teams/'>
                 <MDBCard className="cascading-admin-card">
                     <div className="admin-up">
                     <MDBIcon icon="people-carry" className="light-blue lighten-1"/>

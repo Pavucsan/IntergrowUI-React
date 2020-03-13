@@ -13,7 +13,8 @@ class IndividualGoalProgress extends React.Component{
     componentWillMount()
     {
         if(sessionStorage.getItem('userData')){
-            console.log('call user feed');
+            // console.log('call user feed');
+            this.setState({redirect:false})
           }
           else{
             this.setState({redirect:true})
@@ -27,7 +28,6 @@ class IndividualGoalProgress extends React.Component{
         return(
             <div className=''>  
                 <IndProgHeader/>
-
                 <IndiGoalProgressView idx={this.props.match.params.id}/>
             </div>
         );

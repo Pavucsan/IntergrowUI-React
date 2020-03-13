@@ -61,7 +61,7 @@ class IndividualGoalView extends React.Component{
         let viewGoals = currentPosts.map((goal) =>{
             return(
 
-                <MDBContainer className='card mb-2  #90caf9 blue lighten-3' key={goal.id}>
+                <MDBContainer className={goal.is_inprogress === true ? '#ffff00 yellow accent-2 card mb-2' : '#76ff03 light-green accent-3 card mb-2'} key={goal.id}>
                     <a href={'/individual_goals/progress/' + goal.id} >   
                     <ToastHeader>
                     {/* <ChildComponent tmId={1}/>    */}

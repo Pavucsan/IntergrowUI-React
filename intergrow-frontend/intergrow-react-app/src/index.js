@@ -57,6 +57,8 @@ const routing = (
         </div>
     </BrowserRouter>
 )
+
+console.log('%c ***INTERGROW***', 'background: #222; color: green')
 ReactDOM.render(routing, document.getElementById('root'));
 
 

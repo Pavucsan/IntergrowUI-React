@@ -109,50 +109,26 @@ class GoalsSetGoals extends React.Component{
                     }}>
 
                     <span className="pull-right">
-
+                    <div className='b-2'>
+                    <div className='mt-3 ml-3 mr-2 float-right'><strong>Complete</strong><div className='p-1 #76ff03 light-green accent-3'></div></div>
+                    <div className='mt-3 float-right'><strong>In Progress</strong><div className='p-1 #ffff00 yellow accent-2'></div></div>
+                    </div>
                     <MDBBtn 
                     color = 'primary'                                
                     className={'btn btn-info'}
                     onClick = {this.setGoalToggle.bind(this)}
                     >
                         <i className="fas fa-plus mr-2" ></i>Set Goals</MDBBtn>
+                        
                     </span>
+                    
 
                     <Modal isOpen={this.state.setGoalModal} toggle={this.setGoalToggle.bind(this)}>    
                     <ModalHeader toggle={this.closeToggle.bind(this)}>Create Goal</ModalHeader>
-                    <ModalBody>
-
-                        {/* <FormGroup tag="fieldset">
-                            <legend className="col-form-label col-sm-2">Radio Buttons</legend>
-                            <Row sm={10}>
-                            <FormGroup className='p-0 m-0' check>
-                                <Label  className='p-0 m-0' check>
-                                <Input type="radio" 
-                                name="goalOption"         
-                                value = 'team'                        
-                                checked={this.state.goalOption === 'team'}
-                                onChange={this.onRadioChanged}
-                                />
-                                Team Goal
-                                </Label>
-                            </FormGroup>
-                            <FormGroup className='p-0 m-0' check>
-                                <Label  className='p-0 m-0' check>
-                                <Input type="radio" 
-                                name="goalOption" 
-                                value='employee' 
-                                checked={this.state.goalOption === 'employee'}
-                                onChange={this.onRadioChanged}
-                                />{' '}
-                                Employee Goal
-                                </Label>
-                            </FormGroup>
-                            </Row>
-                        </FormGroup> */}
-                        
+                    <ModalBody>                        
                         <FormGroup >
-                            <InputGroupAddon addonType="prepend">
-                                <InputGroupText><i className="fas fa-id-card-alt mr-2" ></i></InputGroupText>
+                            {/* <InputGroupAddon addonType="prepend"> */}
+                                <InputGroupText><i className="fas fa-id-card-alt mr-3" ></i>
                                     <Input type="select" name="teamIn" 
                                     value={this.state.newGoalData.team}
                                     onChange = {((e)=>{
@@ -160,25 +136,21 @@ class GoalsSetGoals extends React.Component{
                                         newGoalData.team = e.target.value;
                                         this.setState({newGoalData});
                                     })}
-                                            >
-                                                <option>Team</option>
-                                                {
-                                                    this.state.teams.map((team) =>{
-                                                        return(
-                                                            <option value={team.id}>{team.team_name}</option>
-                                                        )
-                                                    })
-                                                }
-                                            </Input>
-                                </InputGroupAddon>
+                                >
+                                    <option>Team</option>
+                                    {
+                                        this.state.teams.map((team) =>{
+                                            return(
+                                                <option value={team.id}>{team.team_name}</option>
+                                            )
+                                        })
+                                    }
+                                </Input></InputGroupText>
+                                {/* </InputGroupAddon> */}
                             </FormGroup> 
-
-
-
-
                         <FormGroup>
-                            <InputGroupAddon addonType="prepend">
-                                <InputGroupText><i className="fas fa-lightbulb mr-2" ></i></InputGroupText>
+                            {/* <InputGroupAddon addonType="prepend"> */}
+                                <InputGroupText><i className="fas fa-lightbulb mr-2" ></i>
                                 <Input type='textarea' placeholder="Goal description"
                                 name='goal_discription'
                                 value={this.state.newGoalData.goal_discription}
@@ -187,13 +159,12 @@ class GoalsSetGoals extends React.Component{
                                     newGoalData.goal_discription = e.target.value;
                                     this.setState({newGoalData});
                                 })}
-                                 />
-                            </InputGroupAddon>
+                                 /></InputGroupText>
+                            {/* </InputGroupAddon> */}
                         </FormGroup> 
                         <FormGroup>
-                            <InputGroupAddon addonType="prepend">
-                                <InputGroupText><i className="fas fa-calendar-alt mr-2" ></i></InputGroupText>
-                                <InputGroupText>Start Date</InputGroupText>
+                            {/* <InputGroupAddon addonType="prepend"> */}
+                                <InputGroupText><i className="fas fa-calendar-alt mr-2" ></i>
                                 <Input type='date' placeholder="start date" 
                                     name='start_date'
                                     value={this.state.newGoalData.start_date}
@@ -203,12 +174,13 @@ class GoalsSetGoals extends React.Component{
                                         this.setState({newGoalData});
                                     })}
                                 />
-                            </InputGroupAddon>
+                                <InputGroupText>Start Date</InputGroupText>
+                                </InputGroupText>
+                            {/* </InputGroupAddon> */}
                         </FormGroup>  
                         <FormGroup>
-                            <InputGroupAddon addonType="prepend">
-                                <InputGroupText><i className="fas fa-calendar-check mr-2" ></i></InputGroupText>
-                                <InputGroupText>End Date</InputGroupText>
+                            {/* <InputGroupAddon addonType="prepend"> */}
+                                <InputGroupText><i className="fas fa-calendar-check mr-2" ></i>
                                 <Input type='date' placeholder="End date" 
                                     name='end_date'
                                     value={this.state.newGoalData.end_date}
@@ -218,12 +190,13 @@ class GoalsSetGoals extends React.Component{
                                         this.setState({newGoalData});
                                     })}
                                      />
-                            </InputGroupAddon>
+                                     <InputGroupText>End Date</InputGroupText></InputGroupText>
+                            {/* </InputGroupAddon> */}
                         </FormGroup>                                      
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.createGoal.bind(this)}>Set</Button>
-                        <Button color="danger" onClick={this.closeToggle.bind(this)}>Cancel</Button>
+                        <Button color={'danger'} className={'btn-sm'} onClick={this.closeToggle.bind(this)}>Cancel</Button>
+                        <Button color={'primary'} className={'btn-sm'} onClick={this.createGoal.bind(this)}>Set</Button>
                     </ModalFooter>
                 </Modal> 
 
