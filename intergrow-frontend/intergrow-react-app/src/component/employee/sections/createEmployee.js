@@ -134,7 +134,7 @@ class CreateEmployee extends React.Component{
             .then(data => data.json())
             // use json data 'use token as authendication'
             .then(data => {
-                Axios.get(COURSE_API_URL + `users/${this.state.credencials.username}`).then((response) => {
+                Axios.get(COURSE_API_URL + `users/name/${this.state.credencials.username}`).then((response) => {
                     // console.log(response.data);
                     let {newEmployeeData} = this.state;
                     newEmployeeData.user = response.data.id;
@@ -149,13 +149,10 @@ class CreateEmployee extends React.Component{
                         this.setState({
                             newEmployeeData,
                         });     
-
-                            Axios.post(COURSE_API_URL + 'employees/', this.state.newEmployeeData).then((response)=>{
-
+                        Axios.post(COURSE_API_URL + 'employees/', this.state.newEmployeeData).then((response)=>{
                             console.log(response.data);
                             let {employees} = this.state;
                             employees.push(response.data);
-
                             this.setState({
                                 employees,
                                 
