@@ -169,8 +169,21 @@ class CreateEmployee extends React.Component{
                                 },                                
                                 newEmployeeModal:false,
                             });
+                            
+                            window.location.reload();
                         });    
                     });
+                    Axios.get(COURSE_API_URL + 'employee/user/', response.data.id).then((empRes)=>{
+                        console.log(empRes + 'test 1');
+                        if(empRes === null){
+                            Axios.delete(COURSE_API_URL + 'users/' + response.data.id).then((res)=>{
+                                console.log(res);
+                            })
+                        }
+                        else{
+                            console.log("created successfully!");
+                        }
+                    })
             });
             if(data.token == null){        
                 console.error("Register faild!");  
@@ -183,7 +196,6 @@ class CreateEmployee extends React.Component{
             }
             })
         // })
-        // window.location.reload();
     }
         
 

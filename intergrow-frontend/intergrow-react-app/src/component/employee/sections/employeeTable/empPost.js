@@ -55,14 +55,18 @@ class EmpPosts extends React.Component{
         console.log(id);
         Axios.get(COURSE_API_URL + `employee/${id}`).then((response) => {
             console.log(response.data.user)
+            Axios.get(COURSE_API_URL + 'users/' + response.data.user).then((response)=>{
+                console.log(response.data);
+            })
             Axios.delete(COURSE_API_URL + 'users/' + response.data.user).then((response)=>{
                 console.log(response);
             })
             Axios.delete(COURSE_API_URL + 'employee/' + id).then((response) => {
                 console.log(response)
+                window.location.reload();  
             })
-        })
-        
+        });
+              
     }
     updateEmployee(){
         // console.log(this.state.editEmployee);
