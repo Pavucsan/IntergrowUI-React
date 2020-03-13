@@ -21,8 +21,9 @@ class CreateEmployee extends React.Component{
                 phone_number:'',
                 address:'',
                 user:[],
-                employee_role:''
+                role_employee:[]
             },
+            employee_role_id:'',
             employee_role:[],
             credencials: {username: '', password: ''},
             // , groups:{name:''}
@@ -57,7 +58,7 @@ class CreateEmployee extends React.Component{
             this.setState({
                 employee_role: response.data
             });
-            console.log(this.state.employee_role);
+            // console.log(this.state.employee_role);
         });
     }
     getGroups(){
@@ -122,6 +123,7 @@ class CreateEmployee extends React.Component{
     {
         console.log(JSON.stringify(this.state.credencials));
         console.log(this.state.newEmployeeData);
+        console.log(this.state.employee_role_id);
 
         fetch(COURSE_AUTH_USERS_URL, {
             method : 'POST',
@@ -140,29 +142,38 @@ class CreateEmployee extends React.Component{
                         newEmployeeData,
                     });            
                     console.log(this.state.newEmployeeData);
-                    Axios.post(COURSE_API_URL + 'employees/', this.state.newEmployeeData).then((response)=>{
 
-                    console.log(response.data);
-                    let {employees} = this.state;
-                    employees.push(response.data);
+                    Axios.get(COURSE_API_URL + `role_employee/${this.state.employee_role_id}`).then((response) => {  
+                        let {newEmployeeData} = this.state;
+                        newEmployeeData.role_employee = response.data.id;
+                        this.setState({
+                            newEmployeeData,
+                        });     
 
-                    this.setState({
-                        employees,
-                        
-                        newEmployeeData:{
-                        employee_id: '',
-                        full_name:'',
-                        first_name:'',
-                        last_name:'',
-                        email:'',
-                        phone_number:'',
-                        address:'',
-                        user:[],
-                        },
-                        
-                        newEmployeeModal:false,
+                            Axios.post(COURSE_API_URL + 'employees/', this.state.newEmployeeData).then((response)=>{
+
+                            console.log(response.data);
+                            let {employees} = this.state;
+                            employees.push(response.data);
+
+                            this.setState({
+                                employees,
+                                
+                                newEmployeeData:{
+                                employee_id: '',
+                                full_name:'',
+                                first_name:'',
+                                last_name:'',
+                                email:'',
+                                phone_number:'',
+                                address:'',
+                                user:[],
+                                role_employee:[]
+                                },                                
+                                newEmployeeModal:false,
+                            });
+                        });    
                     });
-                });                    
             });
             if(data.token == null){        
                 console.error("Register faild!");  
@@ -175,7 +186,7 @@ class CreateEmployee extends React.Component{
             }
             })
         // })
-        window.location.reload();
+        // window.location.reload();
     }
         
 
@@ -326,11 +337,11 @@ class CreateEmployee extends React.Component{
                                     <InputGroupText><i className="fas fa-users mr-2" ></i>
                                         <Input placeholder="Role" 
                                             type='select'                                            
-                                            value={this.state.newEmployeeData.employee_role}
+                                            value={this.state.employee_role_id}
                                             onChange={(e)=>{
-                                                let {newEmployeeData} = this.state;
-                                                newEmployeeData.employee_role = e.target.value;
-                                                this.setState({newEmployeeData})
+                                                let {employee_role_id} = this.state;
+                                                employee_role_id = e.target.value;
+                                                this.setState({employee_role_id})
                                             }}
                                         >
                                             <option>Select Role</option>

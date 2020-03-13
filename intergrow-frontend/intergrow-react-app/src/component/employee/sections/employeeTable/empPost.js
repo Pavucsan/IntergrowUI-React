@@ -47,20 +47,22 @@ class EmpPosts extends React.Component{
                     address     : response.data.address,
                     // user        : response.data.user,
                 }
-            })
-        })
+            });
+        window.location.reload();
+        });
     }
     deleteEmployee(id){
         console.log(id);
         Axios.get(COURSE_API_URL + `employee/${id}`).then((response) => {
             console.log(response.data.user)
-            // Axios.delete(COURSE_API_URL + 'user/' + response.data.user).then((response)=>{
-            //     console.log(response);
-            // })
+            Axios.delete(COURSE_API_URL + 'users/' + response.data.user).then((response)=>{
+                console.log(response);
+            })
+            Axios.delete(COURSE_API_URL + 'employee/' + id).then((response) => {
+                console.log(response)
+            })
         })
-        // Axios.delete(COURSE_API_URL + 'employee/' + id).then((response) => {
-        //     console.log(response)
-        // })
+        
     }
     updateEmployee(){
         // console.log(this.state.editEmployee);
